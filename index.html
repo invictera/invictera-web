@@ -142,7 +142,22 @@
       padding: 100px 48px 80px;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
+      justify-content: space-between;
+      gap: 48px;
+    }
+
+    .hero-svg-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.85;
+    }
+
+    .hero-svg-wrap svg {
+      width: 100%;
+      max-width: 340px;
+      height: auto;
     }
 
     .hero-stat-grid {
@@ -463,6 +478,43 @@
       .nav-links { display: none; }
       .hero-stat-grid { grid-template-columns: 1fr 1fr; }
     }
+
+    /* ── HERO IMAGE STRIP ── */
+    .hero-image-strip {
+      position: relative;
+      width: 100%;
+      height: 480px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .hero-image-strip img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      display: block;
+      filter: grayscale(20%) contrast(1.05);
+    }
+
+    .image-credit {
+      position: absolute;
+      bottom: 12px;
+      right: 16px;
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.06em;
+      font-weight: 300;
+    }
+
+    .image-credit a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+    }
+
+    @media (max-width: 900px) {
+      .hero-image-strip { height: 300px; }
+    }
   </style>
 </head>
 <body>
@@ -493,6 +545,54 @@
     <a href="#contact" class="cta-link">Initiate dialogue</a>
   </div>
   <div class="hero-right">
+    <div class="hero-svg-wrap">
+      <svg viewBox="0 0 400 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style>
+            .svg-animate-1 { animation: fadeIn 1.2s ease forwards; opacity: 0; }
+            .svg-animate-2 { animation: fadeIn 1.2s ease 0.3s forwards; opacity: 0; }
+            .svg-animate-3 { animation: fadeIn 1.2s ease 0.6s forwards; opacity: 0; }
+            .svg-animate-4 { animation: fadeIn 1.2s ease 0.9s forwards; opacity: 0; }
+            .svg-animate-5 { animation: fadeIn 1.2s ease 1.2s forwards; opacity: 0; }
+            .svg-pulse { animation: pulse 4s ease-in-out infinite; }
+            @keyframes fadeIn { to { opacity: 1; } }
+            @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
+          </style>
+        </defs>
+        <circle class="svg-animate-1" cx="200" cy="190" r="160" stroke="#0f0f0e" stroke-width="0.75" stroke-dasharray="4 6" opacity="0.2"/>
+        <circle class="svg-animate-2" cx="200" cy="190" r="110" stroke="#0f0f0e" stroke-width="1" opacity="0.25"/>
+        <circle class="svg-animate-3" cx="200" cy="190" r="60" stroke="#0f0f0e" stroke-width="1.5" opacity="0.4"/>
+        <circle class="svg-animate-3" cx="200" cy="190" r="58" fill="#0f0f0e" opacity="0.04"/>
+        <line class="svg-animate-2" x1="200" y1="30" x2="200" y2="350" stroke="#0f0f0e" stroke-width="0.5" opacity="0.15"/>
+        <line class="svg-animate-2" x1="40" y1="190" x2="360" y2="190" stroke="#0f0f0e" stroke-width="0.5" opacity="0.15"/>
+        <line class="svg-animate-3" x1="87" y1="77" x2="313" y2="303" stroke="#0f0f0e" stroke-width="0.5" opacity="0.1"/>
+        <line class="svg-animate-3" x1="313" y1="77" x2="87" y2="303" stroke="#0f0f0e" stroke-width="0.5" opacity="0.1"/>
+        <circle class="svg-animate-4" cx="200" cy="80" r="4" fill="#0f0f0e" opacity="0.5"/>
+        <circle class="svg-animate-4" cx="295" cy="135" r="4" fill="#0f0f0e" opacity="0.5"/>
+        <circle class="svg-animate-4" cx="295" cy="245" r="4" fill="#0f0f0e" opacity="0.5"/>
+        <circle class="svg-animate-4" cx="200" cy="300" r="4" fill="#0f0f0e" opacity="0.5"/>
+        <circle class="svg-animate-4" cx="105" cy="245" r="4" fill="#0f0f0e" opacity="0.5"/>
+        <circle class="svg-animate-4" cx="105" cy="135" r="4" fill="#0f0f0e" opacity="0.5"/>
+        <polygon class="svg-animate-4" points="200,80 295,245 105,245" stroke="#0f0f0e" stroke-width="0.75" fill="none" opacity="0.2"/>
+        <polygon class="svg-animate-4" points="295,135 105,135 200,300" stroke="#0f0f0e" stroke-width="0.75" fill="none" opacity="0.2"/>
+        <text class="svg-animate-5" x="200" y="64" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="7.5" letter-spacing="2" fill="#0f0f0e" opacity="0.55">TECHNICAL</text>
+        <text class="svg-animate-5" x="318" y="132" text-anchor="start" font-family="'DM Sans', sans-serif" font-size="7.5" letter-spacing="2" fill="#0f0f0e" opacity="0.55">LEGAL</text>
+        <text class="svg-animate-5" x="318" y="248" text-anchor="start" font-family="'DM Sans', sans-serif" font-size="7.5" letter-spacing="2" fill="#0f0f0e" opacity="0.55">ETHICAL</text>
+        <text class="svg-animate-5" x="200" y="322" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="7.5" letter-spacing="2" fill="#0f0f0e" opacity="0.55">FIDUCIARY</text>
+        <text class="svg-animate-5" x="82" y="248" text-anchor="end" font-family="'DM Sans', sans-serif" font-size="7.5" letter-spacing="2" fill="#0f0f0e" opacity="0.55">RISK</text>
+        <text class="svg-animate-5" x="82" y="132" text-anchor="end" font-family="'DM Sans', sans-serif" font-size="7.5" letter-spacing="2" fill="#0f0f0e" opacity="0.55">BOARD</text>
+        <text class="svg-animate-5" x="200" y="184" text-anchor="middle" font-family="'EB Garamond', serif" font-size="11" fill="#0f0f0e" opacity="0.7" font-style="italic">Governance</text>
+        <text class="svg-animate-5" x="200" y="200" text-anchor="middle" font-family="'EB Garamond', serif" font-size="11" fill="#0f0f0e" opacity="0.7" font-style="italic">Integrity</text>
+        <circle class="svg-pulse" cx="200" cy="190" r="5" fill="#0f0f0e" opacity="0.4"/>
+        <circle class="svg-animate-5" cx="200" cy="190" r="3" fill="#0f0f0e" opacity="0.6"/>
+        <g class="svg-animate-1" opacity="0.2">
+          <line x1="200" y1="30" x2="200" y2="38" stroke="#0f0f0e" stroke-width="1"/>
+          <line x1="200" y1="342" x2="200" y2="350" stroke="#0f0f0e" stroke-width="1"/>
+          <line x1="40" y1="190" x2="48" y2="190" stroke="#0f0f0e" stroke-width="1"/>
+          <line x1="352" y1="190" x2="360" y2="190" stroke="#0f0f0e" stroke-width="1"/>
+        </g>
+      </svg>
+    </div>
     <div class="hero-stat-grid">
       <div class="hero-stat">
         <span class="stat-number">4</span>
