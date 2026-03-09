@@ -40,6 +40,29 @@
     .footer-logo { font-family: var(--serif); font-size: 1rem; color: var(--muted); }
     .footer-copy { font-size: 0.75rem; color: var(--muted); }
     @media (max-width: 600px) { nav { padding: 0 24px; } footer { padding: 24px; flex-direction: column; gap: 12px; } .page-wrap { padding: 100px 24px 64px; } .app-row { grid-template-columns: 1fr; } }
+
+    /* ── DARK MODE ── */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --ink: #e8e4dc;
+        --paper: #141412;
+        --rule: #2e2c28;
+        --muted: #8a8680;
+        --accent: #e8e4dc;
+      }
+      nav { background: #141412; }
+      .hero-stat { background: #141412; }
+      .service-card { background: #141412; }
+      .service-card:hover { background: #1c1b18; }
+      .client-sector { background: #141412; }
+      .app-card-body { background: #141412; }
+      .app-card-header { background: #141412; }
+      .scope-note { background: #1c1b18; border-left-color: #2e2c28; }
+      .data-table td { border-color: #2e2c28; }
+      .data-table th { border-color: #2e2c28; }
+      footer { background: #141412; }
+      .hero-image-strip img { filter: grayscale(30%) brightness(0.7); }
+    }
   </style>
 </head>
 <body>

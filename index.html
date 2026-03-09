@@ -515,6 +515,30 @@
     @media (max-width: 900px) {
       .hero-image-strip { height: 300px; }
     }
+
+    /* ── DARK MODE ── */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --ink: #e8e4dc;
+        --paper: #141412;
+        --rule: #2e2c28;
+        --muted: #8a8680;
+        --accent: #e8e4dc;
+      }
+      nav { background: #141412; }
+      .hero-stat { background: #141412; }
+      .service-card { background: #141412; }
+      .service-card:hover { background: #1c1b18; }
+      .client-sector { background: #141412; }
+      .app-card-body { background: #141412; }
+      .app-card-header { background: #141412; }
+      .scope-note { background: #1c1b18; border-left-color: #2e2c28; }
+      .data-table td { border-color: #2e2c28; }
+      .data-table th { border-color: #2e2c28; }
+      footer { background: #141412; }
+      .hero-image-strip img { filter: grayscale(30%) brightness(0.7); }
+      .hero-svg-wrap svg { filter: invert(1) brightness(0.85); }
+    }
   </style>
 </head>
 <body>
