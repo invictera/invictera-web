@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invictera — Algorithmic Governance Advisory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0f0f0e;
+      --paper: #f8f6f1;
+      --rule: #d8d3c8;
+      --accent: #1a1a18;
+      --muted: #6b6760;
+      --serif: 'EB Garamond', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      background: var(--paper);
+      border-bottom: 1px solid var(--rule);
+      z-index: 100;
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── HERO ── */
+    .hero {
+      padding-top: 64px;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .hero-left {
+      padding: 100px 48px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid var(--rule);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 32px;
+      font-family: var(--sans);
+      font-weight: 400;
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 4.5vw, 4rem);
+      line-height: 1.12;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 32px;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .hero-body {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 420px;
+      line-height: 1.75;
+      margin-bottom: 48px;
+      font-weight: 300;
+    }
+
+    .cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 4px;
+      transition: gap 0.2s;
+    }
+
+    .cta-link:hover { gap: 20px; }
+    .cta-link::after { content: '→'; }
+
+    .hero-right {
+      padding: 100px 48px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .hero-stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin-top: auto;
+    }
+
+    .hero-stat {
+      background: var(--paper);
+      padding: 32px 28px;
+    }
+
+    .stat-number {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      font-weight: 400;
+      color: var(--ink);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    /* ── SECTIONS SHARED ── */
+    section {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 96px 48px;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    /* ── POSITIONING ── */
+    .positioning-grid {
+      display: grid;
+      grid-template-columns: 5fr 4fr;
+      gap: 96px;
+      align-items: start;
+    }
+
+    .positioning-body {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .positioning-body p + p { margin-top: 20px; }
+
+    .axiom-list {
+      list-style: none;
+      border-top: 1px solid var(--rule);
+    }
+
+    .axiom-item {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 20px;
+    }
+
+    .axiom-number {
+      font-family: var(--serif);
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding-top: 3px;
+    }
+
+    .axiom-title {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .axiom-body {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* ── SERVICES ── */
+    #services .section-inner { padding-bottom: 0; }
+
+    .services-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
+      margin-bottom: 72px;
+    }
+
+    .services-intro {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      font-weight: 300;
+      padding-top: 8px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border-top: 1px solid var(--rule);
+    }
+
+    .service-card {
+      background: var(--paper);
+      padding: 48px 36px;
+      transition: background 0.2s;
+    }
+
+    .service-card:hover { background: #f0ede5; }
+
+    .service-icon {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      color: var(--muted);
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .service-name {
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ── CLIENTS ── */
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+
+    .client-sector {
+      background: var(--paper);
+      padding: 40px 36px;
+    }
+
+    .sector-name {
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .sector-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* ── CONTACT ── */
+    #contact .section-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
+      align-items: start;
+    }
+
+    .contact-body {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .contact-body p + p { margin-top: 20px; }
+
+    .contact-details {
+      border-top: 1px solid var(--rule);
+    }
+
+    .contact-row {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 16px;
+    }
+
+    .contact-key {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: 2px;
+      font-weight: 400;
+    }
+
+    .contact-val {
+      font-size: 0.95rem;
+      color: var(--ink);
+    }
+
+    .contact-val a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      transition: border-color 0.2s;
+    }
+
+    .contact-val a:hover { border-color: var(--ink); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--ink); }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links { gap: 24px; }
+
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 80px 24px 48px; border-right: none; border-bottom: 1px solid var(--rule); }
+      .hero-right { padding: 48px 24px 80px; }
+
+      .section-inner { padding: 64px 24px; }
+      .positioning-grid { grid-template-columns: 1fr; gap: 48px; }
+      .services-header { grid-template-columns: 1fr; gap: 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .clients-grid { grid-template-columns: 1fr; }
+      #contact .section-inner { grid-template-columns: 1fr; gap: 48px; }
+      footer { flex-direction: column; gap: 24px; padding: 32px 24px; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero-stat-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">Invictera</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#clients">Who We Serve</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Algorithmic Governance Advisory</p>
+    <h1 class="hero-title">
+      Fiduciary clarity<br>
+      in <em>non-deterministic</em><br>
+      systems
+    </h1>
+    <p class="hero-body">
+      Invictera provides institutional-grade AI governance for organizations where algorithmic risk carries material consequence to enterprise value.
+    </p>
+    <a href="#contact" class="cta-link">Initiate dialogue</a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stat-grid">
+      <div class="hero-stat">
+        <span class="stat-number">4</span>
+        <span class="stat-label">Regulatory Jurisdictions Mapped</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-number">I–IV</span>
+        <span class="stat-label">AIGP Certification Standard</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-number">3</span>
+        <span class="stat-label">Axiom Framework</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-number">16 wk</span>
+        <span class="stat-label">Assessment to Assurance</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <p class="section-label">Our Position</p>
+    <div class="positioning-grid">
+      <div>
+        <h2 class="section-title">The governance gap is a board-level problem</h2>
+        <div class="positioning-body">
+          <p>Traditional risk frameworks fail when confronting autonomous systems. As AI scales within enterprise operations, the nature of institutional liability undergoes fundamental transformation. Directors and officers face material exposure when algorithmic decisions impact financial performance, regulatory compliance, or reputational capital.</p>
+          <p>Invictera was established to address a specific market failure: the absence of institutional-grade algorithmic governance services designed for board-level decision-making. Our methodology translates non-deterministic system behavior into governance-legible risk frameworks, enabling executives to fulfill their duty of care in the algorithmic age.</p>
+          <p>We operate at the intersection of technical capability and fiduciary responsibility—translating between engineering teams and corporate leadership.</p>
+        </div>
+      </div>
+      <div>
+        <ul class="axiom-list">
+          <li class="axiom-item">
+            <span class="axiom-number">I</span>
+            <div>
+              <p class="axiom-title">Technical Robustness</p>
+              <p class="axiom-body">Systems must demonstrate predictable behavior under defined operating conditions. Continuous validation against specified performance boundaries and failure mode analysis.</p>
+            </div>
+          </li>
+          <li class="axiom-item">
+            <span class="axiom-number">II</span>
+            <div>
+              <p class="axiom-title">Legal Alignment</p>
+              <p class="axiom-body">Algorithmic operations must maintain conformance with applicable regulatory frameworks across all jurisdictions—EU AI Act, NIST AI RMF, sector-specific requirements.</p>
+            </div>
+          </li>
+          <li class="axiom-item">
+            <span class="axiom-number">III</span>
+            <div>
+              <p class="axiom-title">Ethical Durability</p>
+              <p class="axiom-body">Autonomous systems must operate within societal norms and organizational values over extended time horizons. Governance that survives regulatory evolution.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <p class="section-label">Practice Areas</p>
+    <div class="services-header">
+      <h2 class="section-title">Advisory and assurance across the algorithmic lifecycle</h2>
+      <p class="services-intro">Each engagement is scoped to material risk exposure and regulatory obligations. We design governance that enables rather than impedes business objectives.</p>
+    </div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">01.</div>
+      <p class="service-name">Risk Audit</p>
+      <p class="service-desc">System-level vulnerability assessment against fiduciary standards. Identifies areas of material exposure and recommends prioritized remediation pathways.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">02.</div>
+      <p class="service-name">Framework Design</p>
+      <p class="service-desc">Custom governance architectures aligned to organizational structure, technical maturity, and regulatory obligations across multiple jurisdictions.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">03.</div>
+      <p class="service-name">Regulatory Alignment</p>
+      <p class="service-desc">Compliance mapping to NIST AI RMF, EU AI Act, ISO/IEC 42001, and emerging sector-specific requirements. Frameworks designed for adaptability, not point-in-time compliance.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">04.</div>
+      <p class="service-name">Continuous Assurance</p>
+      <p class="service-desc">Ongoing monitoring of algorithmic behavior against control boundaries. Board-ready reporting and exception-based alert generation for governance teams.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">05.</div>
+      <p class="service-name">Governance Literacy</p>
+      <p class="service-desc">Standardized credential development and training programs for governance teams. Translating technical complexity into institutionally actionable intelligence.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">06.</div>
+      <p class="service-name">Board Advisory</p>
+      <p class="service-desc">Director-level guidance on Algorithmic Fiduciary Duty. Equipping boards to fulfill their duty of care without requiring deep technical expertise.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section id="clients">
+  <div class="section-inner">
+    <p class="section-label">Who We Serve</p>
+    <h2 class="section-title">Organizations where governance failure carries material consequence</h2>
+    <br>
+    <div class="clients-grid">
+      <div class="client-sector">
+        <p class="sector-name">Financial Services</p>
+        <p class="sector-desc">Banks, asset managers, and insurance carriers deploying algorithmic trading, underwriting, and credit decisioning systems under regulatory supervision from OCC, Fed, FCA, MAS, and OSFI.</p>
+      </div>
+      <div class="client-sector">
+        <p class="sector-name">Healthcare Systems</p>
+        <p class="sector-desc">Hospital networks and pharmaceutical companies implementing clinical decision support and drug discovery platforms with patient safety implications and regulatory oversight.</p>
+      </div>
+      <div class="client-sector">
+        <p class="sector-name">Critical Infrastructure</p>
+        <p class="sector-desc">Energy, transportation, and telecommunications operators managing autonomous control systems with public safety and national security dimensions.</p>
+      </div>
+      <div class="client-sector">
+        <p class="sector-name">Enterprise Technology</p>
+        <p class="sector-desc">Software providers and platform operators whose algorithmic products create liability exposure for downstream customers and end users across jurisdictions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div>
+      <p class="section-label">Dialogue</p>
+      <h2 class="section-title">Initial consultations are provided without obligation</h2>
+      <br>
+      <div class="contact-body">
+        <p>We partner with institutions where algorithmic risk carries material consequence to enterprise value. Initial conversations focus on scope definition, risk assessment methodology, and engagement structure tailored to your organization's governance requirements.</p>
+        <p>Board members, general counsels, and chief risk officers are invited to schedule an initial consultation. These conversations typically run 60–90 minutes and cover regulatory landscape analysis, institutional risk profile development, and potential engagement pathways.</p>
+        <p>Invictera maintains strict confidentiality protocols. All preliminary discussions occur under non-disclosure terms.</p>
+      </div>
+    </div>
+    <div>
+      <div class="contact-details">
+        <div class="contact-row">
+          <span class="contact-key">Inquiries</span>
+          <span class="contact-val"><a href="mailto:hello@invictera.com">hello@invictera.com</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-key">Response</span>
+          <span class="contact-val">Within 48 hours</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-key">Entity</span>
+          <span class="contact-val">Invictera LLC</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-key">Legal</span>
+          <span class="contact-val">
+            <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+            <a href="terms.html">Terms of Service</a> &nbsp;·&nbsp;
+            <a href="disclosures.html">App Disclosures</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Invictera</span>
+  <ul class="footer-links">
+    <li><a href="privacy.html">Privacy Policy</a></li>
+    <li><a href="terms.html">Terms of Service</a></li>
+    <li><a href="disclosures.html">App Disclosures</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <span class="footer-copy">© 2026 Invictera LLC. All rights reserved.</span>
+</footer>
+
+</body>
+</html>
