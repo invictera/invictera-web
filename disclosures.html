@@ -34,6 +34,11 @@
     .status-badge { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 10px; border: 1px solid; white-space: nowrap; }
     .status-live { color: #3d6b4f; border-color: #3d6b4f; }
     .status-soon { color: var(--muted); border-color: var(--rule); }
+    .app-store-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 5px 12px; border: 1px solid var(--rule); white-space: nowrap; transition: color 0.2s, border-color 0.2s; }
+    .app-store-link:hover { color: var(--ink); border-color: var(--ink); }
+    .app-store-link svg { flex-shrink: 0; }
+    .app-icon { width: 40px; height: 40px; border-radius: 9px; flex-shrink: 0; }
+    .app-name-wrap { display: flex; align-items: center; gap: 14px; }
     hr.divider { border: none; border-top: 1px solid var(--rule); margin: 48px 0; }
     a { color: var(--ink); }
     footer { border-top: 1px solid var(--rule); padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; }
@@ -95,34 +100,78 @@
 
   <div class="app-row">
     <div>
-      <div class="app-name">AIGP Exam Prep: AI Governance</div>
-      <div class="app-desc">Independent study tool for the IAPP Artificial Intelligence Governance Professional certification.</div>
+      <div class="app-name-wrap">
+        <img src="icon-aigp.png" alt="" class="app-icon">
+        <div>
+          <div class="app-name">AIGP Exam Prep: AI Governance</div>
+          <div class="app-desc">Independent study tool for the IAPP Artificial Intelligence Governance Professional certification.</div>
+        </div>
+      </div>
     </div>
-    <span class="status-badge status-live">Live</span>
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <span class="status-badge status-live">Live</span>
+      <a href="https://apps.apple.com/us/app/aigp-exam-prep-ai-governance/id6759467048" target="_blank" rel="noopener" class="app-store-link" aria-label="Download on the App Store">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 16.56 2.93 11.3 4.7 7.72C5.57 5.94 7.36 4.86 9.28 4.84C10.56 4.81 11.78 5.7 12.57 5.7C13.36 5.7 14.85 4.63 16.4 4.8C17.07 4.83 18.91 5.07 20.1 6.8C19.98 6.87 17.53 8.31 17.56 11.26C17.59 14.77 20.63 15.93 20.66 15.94C20.63 16.03 20.19 17.58 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" fill="currentColor"/></svg>
+        <span>App Store</span>
+      </a>
+    </div>
   </div>
 
   <div class="app-row">
     <div>
-      <div class="app-name">Privacy Suite: IAPP Exam Prep</div>
-      <div class="app-desc">Algorithmic preparation platform for CIPP/US, CIPP/E, CIPP/C, CIPP/A, CIPM, CIPT, and AIGP certifications.</div>
+      <div class="app-name-wrap">
+        <img src="icon-privacy-suite.png" alt="" class="app-icon">
+        <div>
+          <div class="app-name">Privacy Suite: IAPP Exam Prep</div>
+          <div class="app-desc">Algorithmic preparation platform for CIPP/US, CIPP/E, CIPP/C, CIPP/A, CIPM, CIPT, and AIGP certifications.</div>
+        </div>
+      </div>
     </div>
-    <span class="status-badge status-live">Live</span>
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <span class="status-badge status-live">Live</span>
+      <a href="https://apps.apple.com/us/app/privacy-suite-exam-prep/id6760373001" target="_blank" rel="noopener" class="app-store-link" aria-label="Download on the App Store">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 16.56 2.93 11.3 4.7 7.72C5.57 5.94 7.36 4.86 9.28 4.84C10.56 4.81 11.78 5.7 12.57 5.7C13.36 5.7 14.85 4.63 16.4 4.8C17.07 4.83 18.91 5.07 20.1 6.8C19.98 6.87 17.53 8.31 17.56 11.26C17.59 14.77 20.63 15.93 20.66 15.94C20.63 16.03 20.19 17.58 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" fill="currentColor"/></svg>
+        <span>App Store</span>
+      </a>
+    </div>
   </div>
 
   <div class="app-row">
     <div>
-      <div class="app-name">CIPP Hub: Exam Prep</div>
-      <div class="app-desc">Dedicated preparation platform for all five IAPP CIPP regional certifications — US, E, A, C, and CN.</div>
+      <div class="app-name-wrap">
+        <img src="icon-cipp.png" alt="" class="app-icon">
+        <div>
+          <div class="app-name">CIPP Hub: Exam Prep</div>
+          <div class="app-desc">Dedicated preparation platform for all five IAPP CIPP regional certifications — US, E, A, C, and CN.</div>
+        </div>
+      </div>
     </div>
-    <span class="status-badge status-live">Live</span>
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <span class="status-badge status-live">Live</span>
+      <a href="https://apps.apple.com/us/app/cipp-hub-exam-prep/id6759620182" target="_blank" rel="noopener" class="app-store-link" aria-label="Download on the App Store">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 16.56 2.93 11.3 4.7 7.72C5.57 5.94 7.36 4.86 9.28 4.84C10.56 4.81 11.78 5.7 12.57 5.7C13.36 5.7 14.85 4.63 16.4 4.8C17.07 4.83 18.91 5.07 20.1 6.8C19.98 6.87 17.53 8.31 17.56 11.26C17.59 14.77 20.63 15.93 20.66 15.94C20.63 16.03 20.19 17.58 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" fill="currentColor"/></svg>
+        <span>App Store</span>
+      </a>
+    </div>
   </div>
 
   <div class="app-row">
     <div>
-      <div class="app-name">StampReady: PE Exam Prep</div>
-      <div class="app-desc">Algorithmic preparation platform for NCEES Professional Engineer exams across 9 Civil, Mechanical, and Electrical disciplines.</div>
+      <div class="app-name-wrap">
+        <img src="icon-stampready.png" alt="" class="app-icon">
+        <div>
+          <div class="app-name">StampReady: PE Exam Prep</div>
+          <div class="app-desc">Algorithmic preparation platform for NCEES Professional Engineer exams across 9 Civil, Mechanical, and Electrical disciplines.</div>
+        </div>
+      </div>
     </div>
-    <span class="status-badge status-live">Live</span>
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <span class="status-badge status-live">Live</span>
+      <a href="https://apps.apple.com/us/app/stampready-pe-exam-prep/id6760597963" target="_blank" rel="noopener" class="app-store-link" aria-label="Download on the App Store">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 16.56 2.93 11.3 4.7 7.72C5.57 5.94 7.36 4.86 9.28 4.84C10.56 4.81 11.78 5.7 12.57 5.7C13.36 5.7 14.85 4.63 16.4 4.8C17.07 4.83 18.91 5.07 20.1 6.8C19.98 6.87 17.53 8.31 17.56 11.26C17.59 14.77 20.63 15.93 20.66 15.94C20.63 16.03 20.19 17.58 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" fill="currentColor"/></svg>
+        <span>App Store</span>
+      </a>
+    </div>
   </div>
 
   <hr class="divider">

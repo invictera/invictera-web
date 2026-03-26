@@ -605,6 +605,13 @@
     .platform-status-active { color: #3d6b4f; border-color: #3d6b4f; }
     .platform-status-building { color: var(--muted); border-color: var(--rule); }
 
+    /* ── APP LINKS ── */
+    .app-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .app-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 5px 12px; border: 1px solid var(--rule); transition: color 0.2s, border-color 0.2s; font-weight: 500; white-space: nowrap; }
+    .app-link:hover { color: var(--ink); border-color: var(--ink); }
+    .app-link svg { flex-shrink: 0; }
+    .app-link-icon { width: 20px; height: 20px; border-radius: 4.5px; flex-shrink: 0; }
+
     /* ── DARK MODE PLATFORM ── */
 
     /* ── DARK MODE ── */
@@ -851,6 +858,24 @@
         <div class="platform-content">
           <p class="platform-name">Certification Tools</p>
           <p class="platform-desc">Algorithmic study platforms for underserved professional certification and licensure markets. Privacy Suite: IAPP Exam Prep, AIGP Exam Prep: AI Governance, CIPP Hub: Exam Prep, and StampReady: PE Exam Prep are live — building the next generation of credentialed practitioners and licensed professionals.</p>
+          <div class="app-links">
+            <a href="https://apps.apple.com/us/app/privacy-suite-exam-prep/id6760373001" target="_blank" rel="noopener" class="app-link">
+              <img src="icon-privacy-suite.png" alt="" class="app-link-icon">
+              Privacy Suite
+            </a>
+            <a href="https://apps.apple.com/us/app/aigp-exam-prep-ai-governance/id6759467048" target="_blank" rel="noopener" class="app-link">
+              <img src="icon-aigp.png" alt="" class="app-link-icon">
+              AIGP Exam Prep
+            </a>
+            <a href="https://apps.apple.com/us/app/cipp-hub-exam-prep/id6759620182" target="_blank" rel="noopener" class="app-link">
+              <img src="icon-cipp.png" alt="" class="app-link-icon">
+              CIPP Hub
+            </a>
+            <a href="https://apps.apple.com/us/app/stampready-pe-exam-prep/id6760597963" target="_blank" rel="noopener" class="app-link">
+              <img src="icon-stampready.png" alt="" class="app-link-icon">
+              StampReady
+            </a>
+          </div>
           <p class="platform-status platform-status-active">Active · Expanding</p>
         </div>
       </div>
