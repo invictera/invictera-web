@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Invictera — Algorithmic Governance Advisory</title>
+  <title>Invictera — Accountability at the Frontier</title>
+  <meta name="description" content="We map the frameworks. We train the practitioners. We advise the institutions. AI governance infrastructure for responsible AI in financial services.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
@@ -20,649 +21,148 @@
     }
 
     html { scroll-behavior: smooth; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
-    body {
-      background: var(--paper);
-      color: var(--ink);
-      font-family: var(--sans);
-      font-size: 16px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      background: var(--paper);
-      border-bottom: 1px solid var(--rule);
-      z-index: 100;
-      padding: 0 48px;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-logo {
-      font-family: var(--serif);
-      font-size: 1.25rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      text-decoration: none;
-      color: var(--ink);
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-    }
-
-    .nav-tagline {
-      font-family: var(--sans);
-      font-size: 0.6rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 400;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 40px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      font-weight: 400;
-      transition: color 0.2s;
-    }
-
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; background: var(--paper); border-bottom: 1px solid var(--rule); z-index: 100; padding: 0 48px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--serif); font-size: 1.25rem; font-weight: 500; letter-spacing: 0.04em; text-decoration: none; color: var(--ink); display: flex; flex-direction: column; gap: 1px; }
+    .nav-tagline { font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; font-weight: 400; transition: color 0.2s; }
     .nav-links a:hover { color: var(--ink); }
 
-    /* ── HERO ── */
-    .hero {
-      padding-top: 64px;
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .hero-left {
-      padding: 100px 48px 80px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      border-right: 1px solid var(--rule);
-    }
-
-    .hero-eyebrow {
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 32px;
-      font-family: var(--sans);
-      font-weight: 400;
-    }
-
-    .hero-title {
-      font-family: var(--serif);
-      font-size: clamp(2.6rem, 4.5vw, 4rem);
-      line-height: 1.12;
-      font-weight: 400;
-      color: var(--ink);
-      margin-bottom: 32px;
-    }
-
-    .hero-title em {
-      font-style: italic;
-      color: var(--muted);
-    }
-
-    .hero-body {
-      font-size: 1rem;
-      color: var(--muted);
-      max-width: 420px;
-      line-height: 1.75;
-      margin-bottom: 48px;
-      font-weight: 300;
-    }
-
-    .cta-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink);
-      text-decoration: none;
-      font-weight: 500;
-      border-bottom: 1px solid var(--ink);
-      padding-bottom: 4px;
-      transition: gap 0.2s;
-    }
-
+    /* HERO */
+    .hero { padding-top: 64px; min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--rule); }
+    .hero-left { padding: 100px 48px 80px; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid var(--rule); }
+    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; font-family: var(--sans); font-weight: 400; }
+    .hero-title { font-family: var(--serif); font-size: clamp(2.6rem, 4.5vw, 3.8rem); line-height: 1.12; font-weight: 400; color: var(--ink); margin-bottom: 32px; }
+    .hero-title em { font-style: italic; color: var(--muted); }
+    .hero-body { font-size: 1rem; color: var(--muted); max-width: 420px; line-height: 1.75; margin-bottom: 48px; font-weight: 300; }
+    .cta-link { display: inline-flex; align-items: center; gap: 12px; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); text-decoration: none; font-weight: 500; border-bottom: 1px solid var(--ink); padding-bottom: 4px; transition: gap 0.2s; }
     .cta-link:hover { gap: 20px; }
     .cta-link::after { content: '→'; }
+    .hero-right { padding: 100px 48px 80px; display: flex; flex-direction: column; justify-content: space-between; gap: 48px; }
+    .hero-pillars { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 28px; }
+    .pillar { padding-left: 20px; border-left: 2px solid var(--rule); }
+    .pillar-num { font-family: var(--serif); font-size: 0.85rem; color: var(--muted); font-style: italic; margin-bottom: 4px; }
+    .pillar-title { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; margin-bottom: 6px; }
+    .pillar-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
+    .hero-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: auto; }
+    .hero-stat { background: var(--paper); padding: 28px 24px; }
+    .stat-number { font-family: var(--serif); font-size: 2.2rem; font-weight: 400; color: var(--ink); display: block; margin-bottom: 6px; }
+    .stat-label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
 
-    .hero-right {
-      padding: 100px 48px 80px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 48px;
-    }
+    /* SECTIONS SHARED */
+    section { border-bottom: 1px solid var(--rule); }
+    .section-inner { max-width: 1200px; margin: 0 auto; padding: 96px 48px; }
+    .section-label { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 48px; display: flex; align-items: center; gap: 16px; }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+    .section-title { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 400; line-height: 1.2; margin-bottom: 24px; }
 
-    .hero-svg-wrap {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0.85;
-    }
+    /* FRAMEWORKS SECTION */
+    .fw-feature { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: start; }
+    .fw-body { font-size: 1.05rem; color: var(--muted); line-height: 1.8; font-weight: 300; }
+    .fw-body p + p { margin-top: 20px; }
+    .fw-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+    .fw-stat { background: var(--paper); padding: 28px 24px; }
+    .fw-cta { margin-top: 36px; }
 
-    .hero-svg-wrap svg {
-      width: 100%;
-      max-width: 480px;
-      height: auto;
-    }
+    /* APPS SECTION */
+    .apps-intro { font-size: 1rem; color: var(--muted); line-height: 1.8; font-weight: 300; max-width: 640px; margin-bottom: 48px; }
+    .apps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+    .app-card { background: var(--paper); padding: 36px 28px; text-align: center; text-decoration: none; color: inherit; transition: background 0.2s; display: block; }
+    .app-card:hover { background: #f0ede5; }
+    .sr-row { display:grid; grid-template-columns: auto 1fr auto; gap:24px; align-items:center; padding:32px 36px; text-decoration:none; color:inherit; transition: background 0.2s; }
+    .sr-row:hover { background: #f0ede5; }
+    .app-card img { width: 72px; height: 72px; border-radius: 16px; margin-bottom: 16px; }
+    .app-card-name { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; margin-bottom: 6px; }
+    .app-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.55; font-weight: 300; }
+    .app-card-badge { display: inline-block; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: #3d6b4f; border: 1px solid #3d6b4f; padding: 2px 8px; margin-top: 12px; }
 
-    .hero-stat-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--rule);
-      border: 1px solid var(--rule);
-      margin-top: auto;
-    }
-
-    .hero-stat {
-      background: var(--paper);
-      padding: 32px 28px;
-    }
-
-    .stat-number {
-      font-family: var(--serif);
-      font-size: 2.4rem;
-      font-weight: 400;
-      color: var(--ink);
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    .stat-label {
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 400;
-    }
-
-    /* ── SECTIONS SHARED ── */
-    section {
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .section-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 96px 48px;
-    }
-
-    .section-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 48px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--rule);
-    }
-
-    .section-title {
-      font-family: var(--serif);
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      font-weight: 400;
-      line-height: 1.2;
-      margin-bottom: 24px;
-    }
-
-    /* ── POSITIONING ── */
-    .positioning-grid {
-      display: grid;
-      grid-template-columns: 5fr 4fr;
-      gap: 96px;
-      align-items: start;
-    }
-
-    .positioning-body {
-      font-size: 1.05rem;
-      color: var(--muted);
-      line-height: 1.8;
-      font-weight: 300;
-    }
-
-    .positioning-body p + p { margin-top: 20px; }
-
-    .axiom-list {
-      list-style: none;
-      border-top: 1px solid var(--rule);
-    }
-
-    .axiom-item {
-      padding: 28px 0;
-      border-bottom: 1px solid var(--rule);
-      display: grid;
-      grid-template-columns: 28px 1fr;
-      gap: 20px;
-    }
-
-    .axiom-number {
-      font-family: var(--serif);
-      font-size: 0.85rem;
-      color: var(--muted);
-      padding-top: 3px;
-    }
-
-    .axiom-title {
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-weight: 500;
-      margin-bottom: 8px;
-    }
-
-    .axiom-body {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.65;
-      font-weight: 300;
-    }
-
-    /* ── SERVICES ── */
+    /* SERVICES */
+    .services-header { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; margin-bottom: 72px; }
+    .services-intro { font-size: 1rem; color: var(--muted); line-height: 1.8; font-weight: 300; padding-top: 8px; }
     #services .section-inner { padding-bottom: 0; }
-
-    .services-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 96px;
-      margin-bottom: 72px;
-    }
-
-    .services-intro {
-      font-size: 1rem;
-      color: var(--muted);
-      line-height: 1.8;
-      font-weight: 300;
-      padding-top: 8px;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--rule);
-      border-top: 1px solid var(--rule);
-    }
-
-    .service-card {
-      background: var(--paper);
-      padding: 48px 36px;
-      transition: background 0.2s;
-    }
-
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border-top: 1px solid var(--rule); }
+    .service-card { background: var(--paper); padding: 48px 36px; transition: background 0.2s; }
     .service-card:hover { background: #f0ede5; }
+    .service-icon { font-family: var(--serif); font-size: 1.6rem; color: var(--muted); margin-bottom: 24px; font-style: italic; }
+    .service-name { font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; margin-bottom: 16px; }
+    .service-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
 
-    .service-icon {
-      font-family: var(--serif);
-      font-size: 1.6rem;
-      color: var(--muted);
-      margin-bottom: 24px;
-      font-style: italic;
-    }
+    /* CLIENTS */
+    .clients-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+    .client-sector { background: var(--paper); padding: 40px 36px; }
+    .sector-name { font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; margin-bottom: 12px; }
+    .sector-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.65; font-weight: 300; }
 
-    .service-name {
-      font-size: 0.75rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-weight: 500;
-      margin-bottom: 16px;
-    }
-
-    .service-desc {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.7;
-      font-weight: 300;
-    }
-
-    /* ── CLIENTS ── */
-    .clients-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1px;
-      background: var(--rule);
-      border: 1px solid var(--rule);
-    }
-
-    .client-sector {
-      background: var(--paper);
-      padding: 40px 36px;
-    }
-
-    .sector-name {
-      font-size: 0.75rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-weight: 500;
-      margin-bottom: 12px;
-    }
-
-    .sector-desc {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.65;
-      font-weight: 300;
-    }
-
-    /* ── CONTACT ── */
-    #contact .section-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 96px;
-      align-items: start;
-    }
-
-    .contact-body {
-      font-size: 1rem;
-      color: var(--muted);
-      line-height: 1.8;
-      font-weight: 300;
-    }
-
+    /* CONTACT */
+    #contact .section-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: start; }
+    .contact-body { font-size: 1rem; color: var(--muted); line-height: 1.8; font-weight: 300; }
     .contact-body p + p { margin-top: 20px; }
+    .contact-details { border-top: 1px solid var(--rule); }
+    .contact-row { display: flex; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid var(--rule); }
+    .contact-key { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+    .contact-val { font-size: 0.9rem; text-align: right; font-weight: 300; }
+    .contact-val a { color: var(--ink); }
 
-    .contact-details {
-      border-top: 1px solid var(--rule);
-    }
-
-    .contact-row {
-      padding: 24px 0;
-      border-bottom: 1px solid var(--rule);
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 16px;
-    }
-
-    .contact-key {
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      padding-top: 2px;
-      font-weight: 400;
-    }
-
-    .contact-val {
-      font-size: 0.95rem;
-      color: var(--ink);
-    }
-
-    .contact-val a {
-      color: var(--ink);
-      text-decoration: none;
-      border-bottom: 1px solid var(--rule);
-      transition: border-color 0.2s;
-    }
-
-    .contact-val a:hover { border-color: var(--ink); }
-
-    /* ── FOOTER ── */
-    footer {
-      padding: 40px 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .footer-logo {
-      font-family: var(--serif);
-      font-size: 1rem;
-      color: var(--muted);
-      font-weight: 400;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-
-    .footer-links a {
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
+    /* FOOTER */
+    footer { padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { font-family: var(--serif); font-size: 1rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
     .footer-links a:hover { color: var(--ink); }
+    .footer-copy { font-size: 0.75rem; color: var(--muted); }
 
-    .footer-copy {
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-
-    /* ── RESPONSIVE ── */
+    /* RESPONSIVE */
     @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { border-right: none; border-bottom: 1px solid var(--rule); padding: 100px 24px 48px; }
+      .hero-right { padding: 48px 24px; }
       nav { padding: 0 24px; }
-      .nav-links { gap: 24px; }
-
-      .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-left { padding: 80px 24px 48px; border-right: none; border-bottom: 1px solid var(--rule); }
-      .hero-right { padding: 48px 24px 80px; }
-
+      .nav-links { gap: 20px; }
       .section-inner { padding: 64px 24px; }
-      .positioning-grid { grid-template-columns: 1fr; gap: 48px; }
-      .platform-header { grid-template-columns: 1fr; gap: 24px; }
-      .platform-item { grid-template-columns: 1fr; gap: 8px; padding: 28px 24px; }
-      .platform-number { font-size: 1rem; }
-      .services-header { grid-template-columns: 1fr; gap: 24px; }
-      .services-grid { grid-template-columns: 1fr; }
+      .fw-feature, .services-header, #contact .section-inner { grid-template-columns: 1fr; gap: 48px; }
+      .services-grid, .apps-grid { grid-template-columns: 1fr 1fr; }
       .clients-grid { grid-template-columns: 1fr; }
-      #contact .section-inner { grid-template-columns: 1fr; gap: 48px; }
-      footer { flex-direction: column; gap: 24px; padding: 32px 24px; text-align: center; }
-      .footer-links { flex-wrap: wrap; justify-content: center; }
+      footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
     }
-
     @media (max-width: 600px) {
       .nav-links { display: none; }
-      .hero-stat-grid { grid-template-columns: 1fr 1fr; }
+      .services-grid, .apps-grid { grid-template-columns: 1fr; }
     }
 
-    /* ── HERO IMAGE STRIP ── */
-    .hero-image-strip {
-      position: relative;
-      width: 100%;
-      height: 480px;
-      overflow: hidden;
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .hero-image-strip img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 40%;
-      display: block;
-      filter: grayscale(20%) contrast(1.05);
-    }
-
-    .image-credit {
-      position: absolute;
-      bottom: 12px;
-      right: 16px;
-      font-size: 0.65rem;
-      color: rgba(255,255,255,0.5);
-      letter-spacing: 0.06em;
-      font-weight: 300;
-    }
-
-    .image-credit a {
-      color: rgba(255,255,255,0.5);
-      text-decoration: none;
-    }
-
-    @media (max-width: 900px) {
-      .hero-image-strip { height: 300px; }
-    }
-
-    /* ── PLATFORM ── */
-    .platform-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 96px;
-      margin-bottom: 64px;
-    }
-
-    .platform-intro {
-      font-size: 1rem;
-      color: var(--muted);
-      line-height: 1.8;
-      font-weight: 300;
-      padding-top: 8px;
-    }
-
-    .platform-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1px;
-      background: var(--rule);
-      border: 1px solid var(--rule);
-    }
-
-    .platform-item {
-      background: var(--paper);
-      padding: 36px 40px;
-      display: grid;
-      grid-template-columns: 56px 1fr;
-      gap: 32px;
-      align-items: start;
-      transition: background 0.2s;
-    }
-
-    .platform-item:hover { background: #f0ede5; }
-
-    .platform-number {
-      font-family: var(--serif);
-      font-size: 1.4rem;
-      color: var(--rule);
-      font-weight: 400;
-      padding-top: 2px;
-    }
-
-    .platform-name {
-      font-size: 0.75rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-weight: 500;
-      color: var(--ink);
-      margin-bottom: 10px;
-    }
-
-    .platform-desc {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.75;
-      font-weight: 300;
-      margin-bottom: 14px;
-    }
-
-    .platform-status {
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-weight: 500;
-      display: inline-block;
-      padding: 3px 10px;
-      border: 1px solid;
-    }
-
-    .platform-status-active { color: #3d6b4f; border-color: #3d6b4f; }
-    .platform-status-building { color: var(--muted); border-color: var(--rule); }
-
-    /* ── APP LINKS ── */
-    .app-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
-    .app-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 5px 12px; border: 1px solid var(--rule); transition: color 0.2s, border-color 0.2s; font-weight: 500; white-space: nowrap; }
-    .app-link:hover { color: var(--ink); border-color: var(--ink); }
-    .app-link svg { flex-shrink: 0; }
-    .app-link-icon { width: 20px; height: 20px; border-radius: 4.5px; flex-shrink: 0; }
-
-    /* ── DARK MODE PLATFORM ── */
-
-    /* ── DARK MODE ── */
+    /* DARK MODE */
     @media (prefers-color-scheme: dark) {
-      :root {
-        --ink: #e8e4dc;
-        --paper: #141412;
-        --rule: #2e2c28;
-        --muted: #8a8680;
-        --accent: #e8e4dc;
-      }
+      :root { --ink: #e8e4dc; --paper: #141412; --rule: #2e2c28; --muted: #8a8680; --accent: #e8e4dc; }
       nav { background: #141412; }
       .hero-stat { background: #141412; }
+      .fw-stat { background: #141412; }
       .service-card { background: #141412; }
       .service-card:hover { background: #1c1b18; }
       .client-sector { background: #141412; }
-      .app-card-body { background: #141412; }
-      .app-card-header { background: #141412; }
-      .scope-note { background: #1c1b18; border-left-color: #2e2c28; }
-      .data-table td { border-color: #2e2c28; }
-      .data-table th { border-color: #2e2c28; }
-      .platform-item { background: #141412; }
-      .platform-item:hover { background: #1c1b18; }
+      .app-card { background: #141412; }
+      .app-card:hover { background: #1c1b18; }
+      .sr-row:hover { background: #1c1b18; }
       footer { background: #141412; }
-      .hero-image-strip img { filter: grayscale(30%) brightness(0.7); }
-      .hero-svg-wrap svg { filter: invert(1) brightness(0.85); }
     }
   </style>
-  <!-- PostHog Analytics -->
   <script>
-    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="vi init Ti Ci ft Ri Oi ki capture calculateEventProperties Li register register_once register_for_session unregister unregister_for_session zi getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty Ni Ai createPersonProfile setInternalOrTestUser Ui Si Hi opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Fi debug bt ji getPageViewId captureTraceFeedback captureTraceMetric wi".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-    posthog.init('phc_lD3VY4M5qZkTWhpnOjdAvmtsIwtU75xt6YFPZ7a4bUy', {
-        api_host: 'https://k.invictera.com',
-        ui_host: 'https://us.posthog.com',
-        defaults: '2026-01-30',
-        person_profiles: 'always',
-    });
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog&&window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="vi init Ti Ci ft Ri Oi ki capture calculateEventProperties Li register register_once register_for_session unregister unregister_for_session zi getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty Ni Ai createPersonProfile setInternalOrTestUser Ui Si Hi opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Fi debug bt ji getPageViewId captureTraceFeedback captureTraceMetric wi".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_lD3VY4M5qZkTWhpnOjdAvmtsIwtU75xt6YFPZ7a4bUy',{api_host:'https://k.invictera.com',ui_host:'https://us.posthog.com',defaults:'2026-01-30',person_profiles:'always'});
   </script>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="/" class="nav-logo">
     Invictera
-    <span class="nav-tagline">Accountability at the frontier.</span>
+    <span class="nav-tagline">Accountability at the Frontier</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#clients">Who We Serve</a></li>
+    <li><a href="#frameworks">Frameworks</a></li>
+    <li><a href="#apps">Apps</a></li>
+    <li><a href="#services">Advisory</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -670,247 +170,174 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <p class="hero-eyebrow">Algorithmic Governance Advisory</p>
-    <h1 class="hero-title">
-      Fiduciary clarity<br>
-      in <em>non-deterministic</em><br>
-      systems
-    </h1>
-    <p class="hero-body">
-      Invictera provides institutional-grade AI governance for organizations where algorithmic risk carries material consequence to enterprise value.
-    </p>
-    <a href="#contact" class="cta-link">Initiate dialogue</a>
+    <p class="hero-eyebrow">AI Governance · Financial Services</p>
+    <h1 class="hero-title">Map the frameworks.<br>Build the practitioners.<br><em>Advise the institutions.</em></h1>
+    <p class="hero-body">AI governance in financial services is fragmented across dozens of frameworks, hundreds of control objectives, and overlapping jurisdictions. Invictera builds the connective tissue: mapping the regulatory landscape, training the practitioners who navigate it, and advising the institutions that must operationalize it.</p>
+    <a href="crosswalk.html" class="cta-link">Explore the cross-framework mapping</a>
   </div>
   <div class="hero-right">
-    <div class="hero-svg-wrap">
-      <svg viewBox="0 0 400 380" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <style>
-            .svg-animate-1 { animation: fadeIn 1.2s ease forwards; opacity: 0; }
-            .svg-animate-2 { animation: fadeIn 1.2s ease 0.3s forwards; opacity: 0; }
-            .svg-animate-3 { animation: fadeIn 1.2s ease 0.6s forwards; opacity: 0; }
-            .svg-animate-4 { animation: fadeIn 1.2s ease 0.9s forwards; opacity: 0; }
-            .svg-animate-5 { animation: fadeIn 1.2s ease 1.2s forwards; opacity: 0; }
-            .svg-pulse { animation: pulse 4s ease-in-out infinite; }
-            @keyframes fadeIn { to { opacity: 1; } }
-            @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
-          </style>
-        </defs>
-        <circle class="svg-animate-1" cx="200" cy="190" r="160" stroke="#0f0f0e" stroke-width="0.75" stroke-dasharray="4 6" opacity="0.2"/>
-        <circle class="svg-animate-2" cx="200" cy="190" r="110" stroke="#0f0f0e" stroke-width="1" opacity="0.25"/>
-        <circle class="svg-animate-3" cx="200" cy="190" r="60" stroke="#0f0f0e" stroke-width="1.5" opacity="0.4"/>
-        <circle class="svg-animate-3" cx="200" cy="190" r="58" fill="#0f0f0e" opacity="0.04"/>
-        <line class="svg-animate-2" x1="200" y1="30" x2="200" y2="350" stroke="#0f0f0e" stroke-width="0.5" opacity="0.15"/>
-        <line class="svg-animate-2" x1="40" y1="190" x2="360" y2="190" stroke="#0f0f0e" stroke-width="0.5" opacity="0.15"/>
-        <line class="svg-animate-3" x1="87" y1="77" x2="313" y2="303" stroke="#0f0f0e" stroke-width="0.5" opacity="0.1"/>
-        <line class="svg-animate-3" x1="313" y1="77" x2="87" y2="303" stroke="#0f0f0e" stroke-width="0.5" opacity="0.1"/>
-        <circle class="svg-animate-4" cx="200" cy="80" r="4" fill="#0f0f0e" opacity="0.5"/>
-        <circle class="svg-animate-4" cx="295" cy="135" r="4" fill="#0f0f0e" opacity="0.5"/>
-        <circle class="svg-animate-4" cx="295" cy="245" r="4" fill="#0f0f0e" opacity="0.5"/>
-        <circle class="svg-animate-4" cx="200" cy="300" r="4" fill="#0f0f0e" opacity="0.5"/>
-        <circle class="svg-animate-4" cx="105" cy="245" r="4" fill="#0f0f0e" opacity="0.5"/>
-        <circle class="svg-animate-4" cx="105" cy="135" r="4" fill="#0f0f0e" opacity="0.5"/>
-        <polygon class="svg-animate-4" points="200,80 295,245 105,245" stroke="#0f0f0e" stroke-width="0.75" fill="none" opacity="0.2"/>
-        <polygon class="svg-animate-4" points="295,135 105,135 200,300" stroke="#0f0f0e" stroke-width="0.75" fill="none" opacity="0.2"/>
-        <text class="svg-animate-5" x="200" y="64" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="7.5" letter-spacing="2" fill="#0f0f0e" opacity="0.55">TECHNICAL</text>
-        <text class="svg-animate-5" x="318" y="132" text-anchor="start" font-family="'DM Sans', sans-serif" font-size="7.5" letter-spacing="2" fill="#0f0f0e" opacity="0.55">LEGAL</text>
-        <text class="svg-animate-5" x="318" y="248" text-anchor="start" font-family="'DM Sans', sans-serif" font-size="7.5" letter-spacing="2" fill="#0f0f0e" opacity="0.55">ETHICAL</text>
-        <text class="svg-animate-5" x="200" y="322" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="7.5" letter-spacing="2" fill="#0f0f0e" opacity="0.55">FIDUCIARY</text>
-        <text class="svg-animate-5" x="82" y="248" text-anchor="end" font-family="'DM Sans', sans-serif" font-size="7.5" letter-spacing="2" fill="#0f0f0e" opacity="0.55">RISK</text>
-        <text class="svg-animate-5" x="82" y="132" text-anchor="end" font-family="'DM Sans', sans-serif" font-size="7.5" letter-spacing="2" fill="#0f0f0e" opacity="0.55">BOARD</text>
-        <text class="svg-animate-5" x="200" y="184" text-anchor="middle" font-family="'EB Garamond', serif" font-size="11" fill="#0f0f0e" opacity="0.7" font-style="italic">Governance</text>
-        <text class="svg-animate-5" x="200" y="200" text-anchor="middle" font-family="'EB Garamond', serif" font-size="11" fill="#0f0f0e" opacity="0.7" font-style="italic">Integrity</text>
-        <circle class="svg-pulse" cx="200" cy="190" r="5" fill="#0f0f0e" opacity="0.4"/>
-        <circle class="svg-animate-5" cx="200" cy="190" r="3" fill="#0f0f0e" opacity="0.6"/>
-        <g class="svg-animate-1" opacity="0.2">
-          <line x1="200" y1="30" x2="200" y2="38" stroke="#0f0f0e" stroke-width="1"/>
-          <line x1="200" y1="342" x2="200" y2="350" stroke="#0f0f0e" stroke-width="1"/>
-          <line x1="40" y1="190" x2="48" y2="190" stroke="#0f0f0e" stroke-width="1"/>
-          <line x1="352" y1="190" x2="360" y2="190" stroke="#0f0f0e" stroke-width="1"/>
-        </g>
-      </svg>
+    <div class="hero-pillars">
+      <div class="pillar">
+        <p class="pillar-num">i.</p>
+        <p class="pillar-title">Standards Intelligence</p>
+        <p class="pillar-desc">Interactive cross-framework mapping of 230 control objectives across NIST AI RMF, EU AI Act, ISO 42001, SR 11-7, and 10+ regulatory frameworks.</p>
+      </div>
+      <div class="pillar">
+        <p class="pillar-num">ii.</p>
+        <p class="pillar-title">Practitioner Development</p>
+        <p class="pillar-desc">Six certification preparation platforms shipping on the App Store, building the next generation of credentialed AI governance and privacy professionals.</p>
+      </div>
+      <div class="pillar">
+        <p class="pillar-num">iii.</p>
+        <p class="pillar-title">Institutional Advisory</p>
+        <p class="pillar-desc">Governance design, regulatory alignment, and continuous assurance for organizations where algorithmic failure carries material consequence.</p>
+      </div>
     </div>
     <div class="hero-stat-grid">
       <div class="hero-stat">
-        <span class="stat-number">4</span>
-        <span class="stat-label">Regulatory Jurisdictions Mapped</span>
+        <span class="stat-number">230</span>
+        <span class="stat-label">Control Objectives Mapped</span>
       </div>
       <div class="hero-stat">
-        <span class="stat-number">I–IV</span>
-        <span class="stat-label">AIGP Certification Standard</span>
+        <span class="stat-number">13</span>
+        <span class="stat-label">Frameworks Cross-Referenced</span>
       </div>
       <div class="hero-stat">
-        <span class="stat-number">3</span>
-        <span class="stat-label">Axiom Framework</span>
+        <span class="stat-number">6</span>
+        <span class="stat-label">Apps Shipped</span>
       </div>
       <div class="hero-stat">
-        <span class="stat-number">16 wk</span>
-        <span class="stat-label">Assessment to Assurance</span>
+        <span class="stat-number">108</span>
+        <span class="stat-label">Institutions Aligned</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
+<!-- FRAMEWORKS -->
+<section id="frameworks">
   <div class="section-inner">
-    <p class="section-label">Our Position</p>
-    <div class="positioning-grid">
+    <p class="section-label">Standards Intelligence</p>
+    <div class="fw-feature">
       <div>
-        <h2 class="section-title">Building the institutional home of the AI governance profession</h2>
-        <div class="positioning-body">
-          <p>AI governance is not a technology problem. It is an accountability problem. Every major institution now deploys systems that make consequential decisions — over credit, risk, hiring, and compliance — that its own board cannot fully oversee, explain to regulators, or be held accountable for under existing frameworks.</p>
-          <p>Invictera was established to close that gap permanently. Not through point-in-time compliance, but through the sustained development of the people, frameworks, tools, and institutional standards that the AI governance profession demands.</p>
-          <p>A profession is forming in real time. Invictera is setting the standards.</p>
+        <h2 class="section-title">The regulatory landscape is fragmented. We built the map.</h2>
+        <div class="fw-body">
+          <p>In February 2026, 108 financial institutions published the CRI Financial Services AI Risk Management Framework: 230 control objectives for governing AI in one of the most regulated sectors on earth. Those objectives map to NIST AI RMF, EU AI Act, ISO 42001, SR 11-7, Colorado AI Act, OECD AI Principles, and a dozen more standards. No single document connects them all.</p>
+          <p>Invictera's Cross-Framework Mapping is an interactive reference that lets compliance officers, risk managers, and governance practitioners navigate the full landscape. Select a regulation, see every control objective that maps to it. Select a control objective, see every regulation it satisfies. Build once, comply everywhere.</p>
+        </div>
+        <div class="fw-cta">
+          <a href="crosswalk.html" class="cta-link">Open the interactive mapping</a>
         </div>
       </div>
       <div>
-        <ul class="axiom-list">
-          <li class="axiom-item">
-            <span class="axiom-number">I</span>
-            <div>
-              <p class="axiom-title">Technical Robustness</p>
-              <p class="axiom-body">Systems must demonstrate predictable behavior under defined operating conditions. Continuous validation against specified performance boundaries and failure mode analysis.</p>
-            </div>
-          </li>
-          <li class="axiom-item">
-            <span class="axiom-number">II</span>
-            <div>
-              <p class="axiom-title">Legal Alignment</p>
-              <p class="axiom-body">Algorithmic operations must maintain conformance with applicable regulatory frameworks across all jurisdictions—EU AI Act, NIST AI RMF, sector-specific requirements.</p>
-            </div>
-          </li>
-          <li class="axiom-item">
-            <span class="axiom-number">III</span>
-            <div>
-              <p class="axiom-title">Ethical Durability</p>
-              <p class="axiom-body">Autonomous systems must operate within societal norms and organizational values over extended time horizons. Governance that survives regulatory evolution.</p>
-            </div>
-          </li>
-        </ul>
+        <div class="fw-stats">
+          <div class="fw-stat"><span class="stat-number">4</span><span class="stat-label">Functions: Govern, Map, Measure, Manage</span></div>
+          <div class="fw-stat"><span class="stat-number">13</span><span class="stat-label">Mapped Frameworks &amp; Regulations</span></div>
+          <div class="fw-stat"><span class="stat-number">4</span><span class="stat-label">Maturity Stages: Initial to Embedded</span></div>
+          <div class="fw-stat"><span class="stat-number">108</span><span class="stat-label">Financial Institutions Behind CRI</span></div>
+        </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- APPS -->
+<section id="apps">
+  <div class="section-inner">
+    <p class="section-label">Practitioner Development</p>
+    <h2 class="section-title">Six platforms. One standard of rigor.</h2>
+    <p class="apps-intro">Frameworks without trained practitioners are documents nobody operationalizes. Invictera's certification platforms use algorithmic spaced repetition, Bayesian knowledge tracing, and AI-synthesized scenarios to build the credentialed workforce AI governance requires.</p>
+  </div>
+  <div class="apps-grid" style="grid-template-columns: repeat(3, 1fr);">
+    <a href="https://apps.apple.com/us/app/aigp-exam-prep-ai-governance/id6759467048" target="_blank" rel="noopener" class="app-card">
+      <img src="AIGP.png" alt="AIGP Exam Prep">
+      <p class="app-card-name">AIGP Exam Prep</p>
+      <p class="app-card-desc">AI Governance Professional certification. The credential for the practitioners building this profession.</p>
+      <span class="app-card-badge">Live</span>
+    </a>
+    <a href="https://apps.apple.com/us/app/privacy-suite-exam-prep/id6760373001" target="_blank" rel="noopener" class="app-card">
+      <img src="PS.png" alt="Privacy Suite">
+      <p class="app-card-name">Privacy Suite</p>
+      <p class="app-card-desc">Comprehensive IAPP privacy certification preparation across all tracks and jurisdictions.</p>
+      <span class="app-card-badge">Live</span>
+    </a>
+    <a href="https://apps.apple.com/us/app/cipp-hub-exam-prep/id6759620182" target="_blank" rel="noopener" class="app-card">
+      <img src="CIPP.png" alt="CIPP Hub">
+      <p class="app-card-name">CIPP Hub</p>
+      <p class="app-card-desc">Certified Information Privacy Professional. US, EU, Canadian, and Asian privacy law tracks.</p>
+      <span class="app-card-badge">Live</span>
+    </a>
+    <a href="https://apps.apple.com/us/app/cipm-exam-prep/id6761635223" target="_blank" rel="noopener" class="app-card">
+      <img src="CIPM.png" alt="CIPM Exam Prep">
+      <p class="app-card-name">CIPM Exam Prep</p>
+      <p class="app-card-desc">Certified Information Privacy Manager. Governance, accountability, and program management.</p>
+      <span class="app-card-badge">Live</span>
+    </a>
+    <a href="https://apps.apple.com/us/app/cipt-exam-prep/id6761635289" target="_blank" rel="noopener" class="app-card">
+      <img src="CIPT.png" alt="CIPT Exam Prep">
+      <p class="app-card-name">CIPT Exam Prep</p>
+      <p class="app-card-desc">Certified Information Privacy Technologist. Privacy-by-design and privacy-enhancing technologies.</p>
+      <span class="app-card-badge">Live</span>
+    </a>
+    <div class="app-card" style="display:flex; flex-direction:column; justify-content:center; border-left: 2px solid var(--rule); text-align:left; padding-left:36px;">
+      <p style="font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; font-weight:400;">Beyond Governance</p>
+      <p style="font-family:var(--serif); font-size:1.15rem; font-weight:400; line-height:1.35; margin-bottom:10px;">The same engine, applied to every underserved credentialing market we find.</p>
+      <p style="font-size:0.85rem; color:var(--muted); line-height:1.6; font-weight:300;">Our algorithmic methodology is domain-agnostic. When we identified that 250,000 engineers sit for PE licensure exams annually with inadequate preparation tools, we shipped.</p>
+    </div>
+  </div>
+  <div style="border-top: 1px solid var(--rule);">
+    <a href="https://apps.apple.com/us/app/stampready-pe-exam-prep/id6760597963" target="_blank" rel="noopener" class="sr-row">
+      <img src="icon-stampready.png" alt="StampReady" style="width:56px; height:56px; border-radius:13px;">
+      <div>
+        <p style="font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:500; margin-bottom:4px;">StampReady: PE Exam Prep</p>
+        <p style="font-size:0.88rem; color:var(--muted); line-height:1.55; font-weight:300;">Professional Engineer licensure preparation across 9 Civil, Mechanical, and Electrical disciplines. Same spaced repetition engine. Different domain. Proof the methodology is portable.</p>
+      </div>
+      <span class="app-card-badge">Live</span>
+    </a>
   </div>
 </section>
 
 <!-- SERVICES -->
 <section id="services">
   <div class="section-inner">
-    <p class="section-label">Practice Areas</p>
     <div class="services-header">
-      <h2 class="section-title">Advisory and assurance across the algorithmic lifecycle</h2>
-      <p class="services-intro">Each engagement is scoped to material risk exposure and regulatory obligations. We design governance that enables rather than impedes business objectives.</p>
+      <div>
+        <p class="section-label">Institutional Advisory</p>
+        <h2 class="section-title">Governance that enables rather than impedes</h2>
+      </div>
+      <p class="services-intro">Each engagement is scoped to material risk exposure and regulatory obligations. We design governance architectures for organizations where AI failure is not theoretical.</p>
     </div>
   </div>
   <div class="services-grid">
     <div class="service-card">
       <div class="service-icon">01.</div>
       <p class="service-name">Risk Audit</p>
-      <p class="service-desc">System-level vulnerability assessment against fiduciary standards. Identifies areas of material exposure and recommends prioritized remediation pathways.</p>
+      <p class="service-desc">System-level vulnerability assessment against the CRI FS AI RMF, NIST AI RMF, and applicable regulatory standards. Prioritized remediation pathways mapped to your adoption stage.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">02.</div>
       <p class="service-name">Framework Design</p>
-      <p class="service-desc">Custom governance architectures aligned to organizational structure, technical maturity, and regulatory obligations across multiple jurisdictions.</p>
+      <p class="service-desc">Custom governance architectures aligned to organizational structure, technical maturity, and regulatory obligations across jurisdictions. Built to survive examination.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">03.</div>
       <p class="service-name">Regulatory Alignment</p>
-      <p class="service-desc">Compliance mapping to NIST AI RMF, EU AI Act, ISO/IEC 42001, and emerging sector-specific requirements. Frameworks designed for adaptability, not point-in-time compliance.</p>
+      <p class="service-desc">Compliance mapping to NIST AI RMF, EU AI Act, ISO 42001, SR 11-7, Colorado AI Act, and emerging sector-specific requirements. Comply up: build to the highest standard, let every other jurisdiction inherit.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">04.</div>
       <p class="service-name">Continuous Assurance</p>
-      <p class="service-desc">Ongoing monitoring of algorithmic behavior against control boundaries. Board-ready reporting and exception-based alert generation for governance teams.</p>
+      <p class="service-desc">Ongoing monitoring of AI systems against control boundaries. Drift detection, fair lending monitoring, and board-ready reporting at examination-grade evidence standards.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">05.</div>
       <p class="service-name">Governance Literacy</p>
-      <p class="service-desc">Standardized credential development and training programs for governance teams. Translating technical complexity into institutionally actionable intelligence.</p>
+      <p class="service-desc">AI literacy programs aligned to EU AI Act Article 4 requirements. Role-appropriate training for boards, risk committees, business lines, and technology teams.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">06.</div>
       <p class="service-name">Board Advisory</p>
-      <p class="service-desc">Director-level guidance on Algorithmic Fiduciary Duty. Equipping boards to fulfill their duty of care without requiring deep technical expertise.</p>
-    </div>
-  </div>
-</section>
-
-<!-- PLATFORM -->
-<section id="platform">
-  <div class="section-inner">
-    <p class="section-label">The Invictera Platform</p>
-    <div class="platform-header">
-      <h2 class="section-title">Five expressions of one mission</h2>
-      <p class="platform-intro">Accountability at the frontier is not a single service. It is a sustained institutional commitment expressed across five interconnected domains — each one reinforcing the others, all anchored to the same standard of rigor.</p>
-    </div>
-    <div class="platform-grid">
-      <div class="platform-item">
-        <div class="platform-number">01</div>
-        <div class="platform-content">
-          <p class="platform-name">Advisory</p>
-          <p class="platform-desc">Institutional-grade AI governance for boards, C-suites, and risk committees. Bespoke frameworks, independent assurance, and fiduciary accountability structures for organizations where algorithmic failure carries material consequence.</p>
-          <p class="platform-status platform-status-active">Active</p>
-        </div>
-      </div>
-      <div class="platform-item">
-        <div class="platform-number">02</div>
-        <div class="platform-content">
-          <p class="platform-name">Certification Tools</p>
-          <p class="platform-desc">Algorithmic study platforms for underserved professional certification and licensure markets. Privacy Suite: IAPP Exam Prep, AIGP Exam Prep: AI Governance, CIPP Hub: Exam Prep, CIPM Exam Prep, CIPT Exam Prep, and StampReady: PE Exam Prep are live — building the next generation of credentialed practitioners and licensed professionals.</p>
-          <div class="app-links">
-            <a href="https://apps.apple.com/us/app/privacy-suite-exam-prep/id6760373001" target="_blank" rel="noopener" class="app-link">
-              <img src="icon-privacy-suite.png" alt="" class="app-link-icon">
-              Privacy Suite
-            </a>
-            <a href="https://apps.apple.com/us/app/aigp-exam-prep-ai-governance/id6759467048" target="_blank" rel="noopener" class="app-link">
-              <img src="icon-aigp.png" alt="" class="app-link-icon">
-              AIGP Exam Prep
-            </a>
-            <a href="https://apps.apple.com/us/app/cipp-hub-exam-prep/id6759620182" target="_blank" rel="noopener" class="app-link">
-              <img src="icon-cipp.png" alt="" class="app-link-icon">
-              CIPP Hub
-            </a>
-            <a href="https://apps.apple.com/us/app/cipm-exam-prep/id6761635223" target="_blank" rel="noopener" class="app-link">
-              <img src="icon-cipm.png" alt="" class="app-link-icon">
-              CIPM Exam Prep
-            </a>
-            <a href="https://apps.apple.com/us/app/cipt-exam-prep/id6761635289" target="_blank" rel="noopener" class="app-link">
-              <img src="icon-cipt.png" alt="" class="app-link-icon">
-              CIPT Exam Prep
-            </a>
-            <a href="https://apps.apple.com/us/app/stampready-pe-exam-prep/id6760597963" target="_blank" rel="noopener" class="app-link">
-              <img src="icon-stampready.png" alt="" class="app-link-icon">
-              StampReady
-            </a>
-          </div>
-          <p class="platform-status platform-status-active">Active · Expanding</p>
-        </div>
-      </div>
-      <div class="platform-item">
-        <div class="platform-number">03</div>
-        <div class="platform-content">
-          <p class="platform-name">Thought Leadership</p>
-          <p class="platform-desc">Original research, regulatory analysis, and practitioner intelligence that shapes how the profession thinks. Published weekly across Invictera's channels — setting the intellectual agenda, not following it.</p>
-          <p class="platform-status platform-status-active">Active</p>
-        </div>
-      </div>
-      <div class="platform-item">
-        <div class="platform-number">04</div>
-        <div class="platform-content">
-          <p class="platform-name">Standards & Frameworks</p>
-          <p class="platform-desc">Proprietary governance methodologies and benchmarks designed to become the operational reference point for AI governance programs globally. The Triple-Axiom Framework is the foundation.</p>
-          <p class="platform-status platform-status-building">In Development</p>
-        </div>
-      </div>
-      <div class="platform-item">
-        <div class="platform-number">05</div>
-        <div class="platform-content">
-          <p class="platform-name">Professional Community</p>
-          <p class="platform-desc">The institutional home for AI governance practitioners — Chief AI Officers, compliance professionals, model risk managers, legal counsel, and the broader community building this profession in real time.</p>
-          <p class="platform-status platform-status-building">Coming</p>
-        </div>
-      </div>
+      <p class="service-desc">Director-level guidance on AI risk oversight. Translating 230 control objectives into the three questions every board needs answered: what do we have, what could go wrong, and can we prove we're managing it.</p>
     </div>
   </div>
 </section>
@@ -924,7 +351,7 @@
     <div class="clients-grid">
       <div class="client-sector">
         <p class="sector-name">Financial Services</p>
-        <p class="sector-desc">Banks, asset managers, and insurance carriers deploying algorithmic trading, underwriting, and credit decisioning systems under regulatory supervision from OCC, Fed, FCA, MAS, and OSFI.</p>
+        <p class="sector-desc">Banks, asset managers, and insurance carriers deploying algorithmic trading, underwriting, and credit decisioning systems under regulatory supervision from OCC, Fed, CFPB, FCA, MAS, and OSFI.</p>
       </div>
       <div class="client-sector">
         <p class="sector-name">Healthcare Systems</p>
@@ -948,18 +375,16 @@
     <div>
       <p class="section-label">Dialogue</p>
       <h2 class="section-title">Initial consultations are provided without obligation</h2>
-      <br>
       <div class="contact-body">
-        <p>We partner with institutions where algorithmic risk carries material consequence to enterprise value. Initial conversations focus on scope definition, risk assessment methodology, and engagement structure tailored to your organization's governance requirements.</p>
-        <p>Board members, general counsels, and chief risk officers are invited to schedule an initial consultation. These conversations typically run 60–90 minutes and cover regulatory landscape analysis, institutional risk profile development, and potential engagement pathways.</p>
-        <p>Invictera maintains strict confidentiality protocols. All preliminary discussions occur under non-disclosure terms.</p>
+        <p>We partner with institutions where algorithmic risk carries material consequence. Initial conversations focus on scope definition, risk assessment methodology, and engagement structure tailored to your governance requirements.</p>
+        <p>Board members, general counsels, and chief risk officers are invited to schedule an initial consultation. Invictera maintains strict confidentiality protocols.</p>
       </div>
     </div>
     <div>
       <div class="contact-details">
         <div class="contact-row">
           <span class="contact-key">Inquiries</span>
-          <span class="contact-val"><a href="/cdn-cgi/l/email-protection#82eae7eeeeedc2ebecf4ebe1f6e7f0e3ace1edef"><span class="__cf_email__" data-cfemail="046c6168686b446d6a726d67706176652a676b69">[email&#160;protected]</span></a></span>
+          <span class="contact-val"><a href="mailto:hello@invictera.com">hello@invictera.com</a></span>
         </div>
         <div class="contact-row">
           <span class="contact-key">Response</span>
@@ -970,11 +395,15 @@
           <span class="contact-val">Invictera LLC</span>
         </div>
         <div class="contact-row">
+          <span class="contact-key">Resources</span>
+          <span class="contact-val"><a href="crosswalk.html">Cross-Framework Mapping</a></span>
+        </div>
+        <div class="contact-row">
           <span class="contact-key">Legal</span>
           <span class="contact-val">
-            <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
-            <a href="terms.html">Terms of Service</a> &nbsp;·&nbsp;
-            <a href="disclosures.html">App Disclosures</a>
+            <a href="privacy.html">Privacy</a> &nbsp;·&nbsp;
+            <a href="terms.html">Terms</a> &nbsp;·&nbsp;
+            <a href="disclosures.html">Disclosures</a>
           </span>
         </div>
       </div>
@@ -982,14 +411,12 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <span class="footer-logo">Invictera</span>
   <ul class="footer-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#clients">Who We Serve</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="crosswalk.html">Frameworks</a></li>
+    <li><a href="#apps">Apps</a></li>
+    <li><a href="#services">Advisory</a></li>
     <li><a href="privacy.html">Privacy</a></li>
     <li><a href="terms.html">Terms</a></li>
     <li><a href="disclosures.html">Disclosures</a></li>
@@ -997,6 +424,5 @@
   <span class="footer-copy">© 2026 Invictera LLC</span>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 </body>
 </html>

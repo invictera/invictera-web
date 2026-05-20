@@ -68,7 +68,8 @@
       footer { background: #141412; }
       .hero-image-strip img { filter: grayscale(30%) brightness(0.7); }
     }
-  </style>
+  .footer-links { display: flex; gap: 24px; list-style: none; } .footer-links a { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; } .footer-links a:hover { color: var(--ink); }
+    </style>
   <!-- PostHog Analytics -->
   <script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="vi init Ti Ci ft Ri Oi ki capture calculateEventProperties Li register register_once register_for_session unregister unregister_for_session zi getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty Ni Ai createPersonProfile setInternalOrTestUser Ui Si Hi opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Fi debug bt ji getPageViewId captureTraceFeedback captureTraceMetric wi".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
@@ -84,7 +85,12 @@
 
 <nav>
   <a href="/" class="nav-logo">Invictera</a>
-  <a href="/" class="nav-back">← Back</a>
+  <div style="display:flex;gap:36px;">
+    <a href="/" class="nav-back">Home</a>
+    <a href="crosswalk.html" class="nav-back">Frameworks</a>
+    <a href="/#apps" class="nav-back">Apps</a>
+    <a href="/#contact" class="nav-back">Contact</a>
+  </div>
 </nav>
 
 <div class="page-wrap">
@@ -101,7 +107,7 @@
   <div class="app-row">
     <div>
       <div class="app-name-wrap">
-        <img src="icon-aigp.png" alt="" class="app-icon">
+        <img src="AIGP.png" alt="" class="app-icon">
         <div>
           <div class="app-name">AIGP Exam Prep: AI Governance</div>
           <div class="app-desc">Independent study tool for the IAPP Artificial Intelligence Governance Professional certification.</div>
@@ -120,7 +126,7 @@
   <div class="app-row">
     <div>
       <div class="app-name-wrap">
-        <img src="icon-privacy-suite.png" alt="" class="app-icon">
+        <img src="PS.png" alt="" class="app-icon">
         <div>
           <div class="app-name">Privacy Suite: IAPP Exam Prep</div>
           <div class="app-desc">Algorithmic preparation platform for CIPP/US, CIPP/E, CIPP/C, CIPP/A, CIPM, CIPT, and AIGP certifications.</div>
@@ -139,7 +145,7 @@
   <div class="app-row">
     <div>
       <div class="app-name-wrap">
-        <img src="icon-cipp.png" alt="" class="app-icon">
+        <img src="CIPP.png" alt="" class="app-icon">
         <div>
           <div class="app-name">CIPP Hub: Exam Prep</div>
           <div class="app-desc">Dedicated preparation platform for all five IAPP CIPP regional certifications — US, E, A, C, and CN.</div>
@@ -158,7 +164,7 @@
   <div class="app-row">
     <div>
       <div class="app-name-wrap">
-        <img src="icon-cipm.png" alt="" class="app-icon">
+        <img src="CIPM.png" alt="" class="app-icon">
         <div>
           <div class="app-name">CIPM Exam Prep</div>
           <div class="app-desc">Focused preparation platform for the IAPP Certified Information Privacy Manager certification, covering privacy program governance across the full operational lifecycle.</div>
@@ -177,7 +183,7 @@
   <div class="app-row">
     <div>
       <div class="app-name-wrap">
-        <img src="icon-cipt.png" alt="" class="app-icon">
+        <img src="CIPT.png" alt="" class="app-icon">
         <div>
           <div class="app-name">CIPT Exam Prep</div>
           <div class="app-desc">Focused preparation platform for the IAPP Certified Information Privacy Technologist certification, covering privacy-by-design principles and privacy-enhancing technologies.</div>
@@ -257,6 +263,13 @@
 
 <footer>
   <span class="footer-logo">Invictera</span>
+  <ul class="footer-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="crosswalk.html">Frameworks</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="terms.html">Terms</a></li>
+    <li><a href="disclosures.html">Disclosures</a></li>
+  </ul>
   <span class="footer-copy">© 2026 Invictera LLC</span>
 </footer>
 

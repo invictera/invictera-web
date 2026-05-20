@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Governance Cross-Framework Mapping — Invictera</title>
+  <meta name="description" content="Interactive cross-framework mapping of CRI FS AI RMF 230 control objectives to NIST AI RMF, EU AI Act, ISO 42001, SR 11-7, Colorado AI Act, OECD, and 10+ regulatory frameworks.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #0f0f0e;
+      --paper: #f8f6f1;
+      --rule: #d8d3c8;
+      --accent: #1a1a18;
+      --muted: #6b6760;
+      --serif: 'EB Garamond', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --gov: #8b6914;
+      --map: #2563a0;
+      --msr: #167552;
+      --mgr: #9e3030;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; background: var(--paper); border-bottom: 1px solid var(--rule); z-index: 100; padding: 0 48px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--serif); font-size: 1.25rem; font-weight: 500; letter-spacing: 0.04em; text-decoration: none; color: var(--ink); }
+    .nav-back { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+    .nav-back:hover { color: var(--ink); }
+
+    /* HERO */
+    .hero { padding: 120px 48px 64px; max-width: 960px; margin: 0 auto; border-bottom: 1px solid var(--rule); }
+    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; }
+    .hero-title { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 400; line-height: 1.15; margin-bottom: 20px; }
+    .hero-title em { font-style: italic; color: var(--muted); }
+    .hero-body { font-size: 1rem; color: var(--muted); line-height: 1.8; font-weight: 300; max-width: 680px; margin-bottom: 32px; }
+    .hero-stats { display: flex; gap: 40px; padding-top: 24px; border-top: 1px solid var(--rule); }
+    .hero-stat-n { font-family: var(--serif); font-size: 2rem; color: var(--ink); }
+    .hero-stat-l { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+
+    /* MAIN LAYOUT */
+    .main-wrap { max-width: 960px; margin: 0 auto; padding: 48px 48px 96px; }
+
+    /* MODE TOGGLE */
+    .mode-bar { display: flex; gap: 0; border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; margin-bottom: 32px; }
+    .mode-btn { flex: 1; padding: 12px 16px; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; text-align: center; cursor: pointer; background: transparent; border: none; color: var(--muted); font-family: var(--sans); font-weight: 400; transition: all 0.15s; }
+    .mode-btn.active { background: var(--ink); color: var(--paper); }
+    .mode-btn:hover:not(.active) { background: #f0ede5; }
+
+    /* FRAMEWORK TABS */
+    .fw-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 28px; }
+    .fw-tab { padding: 8px 14px; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--rule); background: transparent; color: var(--muted); cursor: pointer; font-family: var(--sans); font-weight: 400; transition: all 0.15s; border-radius: 2px; }
+    .fw-tab.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .fw-tab:hover:not(.active) { border-color: var(--muted); color: var(--ink); }
+
+    /* SEARCH */
+    .search-wrap { margin-bottom: 28px; }
+    .search-input { width: 100%; padding: 12px 16px; font-size: 0.9rem; font-family: var(--sans); border: 1px solid var(--rule); background: transparent; color: var(--ink); outline: none; font-weight: 300; }
+    .search-input::placeholder { color: var(--muted); }
+    .search-input:focus { border-color: var(--ink); }
+
+    /* FUNCTION HEADERS */
+    .fn-header { padding: 16px 0; border-bottom: 2px solid var(--rule); margin-bottom: 16px; margin-top: 32px; display: flex; align-items: center; gap: 12px; }
+    .fn-badge { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; padding: 3px 10px; border-radius: 2px; color: white; }
+    .fn-badge-gv { background: var(--gov); }
+    .fn-badge-mp { background: var(--map); }
+    .fn-badge-ms { background: var(--msr); }
+    .fn-badge-mg { background: var(--mgr); }
+    .fn-name { font-family: var(--serif); font-size: 1.4rem; font-weight: 400; }
+    .fn-count { font-size: 0.8rem; color: var(--muted); margin-left: auto; }
+
+    /* OBJECTIVE ROW */
+    .obj-row { border-bottom: 1px solid var(--rule); }
+    .obj-header { display: grid; grid-template-columns: 90px 1fr auto; gap: 12px; padding: 14px 0; cursor: pointer; align-items: center; }
+    .obj-header:hover .obj-name { color: var(--ink); }
+    .obj-id { font-family: 'DM Sans', monospace; font-size: 0.78rem; color: var(--muted); font-weight: 500; letter-spacing: 0.02em; }
+    .obj-name { font-size: 0.88rem; color: var(--muted); font-weight: 400; transition: color 0.15s; }
+    .obj-stage { font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; font-weight: 500; white-space: nowrap; }
+    .stage-initial { background: #6b72801a; color: #6b7280; border: 1px solid #6b72803a; }
+    .stage-minimal { background: #3b82f61a; color: #3b82f6; border: 1px solid #3b82f63a; }
+    .stage-evolving { background: #f59e0b1a; color: #b97a04; border: 1px solid #f59e0b3a; }
+    .stage-embedded { background: #10b9811a; color: #0d8a62; border: 1px solid #10b9813a; }
+    .obj-expand { font-size: 0.85rem; color: var(--rule); transition: transform 0.2s; }
+    .obj-row.open .obj-expand { transform: rotate(90deg); }
+
+    /* DETAIL PANEL */
+    .obj-detail { display: none; padding: 0 0 20px 102px; }
+    .obj-row.open .obj-detail { display: block; }
+    .obj-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.7; font-weight: 300; margin-bottom: 16px; }
+    .mapping-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .mapping-item { padding: 10px 14px; border: 1px solid var(--rule); }
+    .mapping-fw { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin-bottom: 4px; }
+    .mapping-ref { font-size: 0.82rem; color: var(--ink); font-weight: 400; line-height: 1.5; }
+    .mapping-none { font-size: 0.82rem; color: var(--muted); font-style: italic; }
+
+    /* FRAMEWORK VIEW */
+    .fw-section { margin-bottom: 28px; }
+    .fw-section-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; padding: 12px 0; border-bottom: 1px solid var(--rule); margin-bottom: 12px; color: var(--ink); }
+    .fw-section-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; font-weight: 300; margin-bottom: 16px; }
+
+    /* EMPTY STATE */
+    .empty-state { padding: 64px 0; text-align: center; }
+    .empty-state p { font-size: 0.95rem; color: var(--muted); font-weight: 300; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--rule); padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { font-family: var(--serif); font-size: 1rem; color: var(--muted); }
+    .footer-copy { font-size: 0.75rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+
+    .source-note { font-size: 0.78rem; color: var(--muted); line-height: 1.7; font-weight: 300; padding: 24px 0; border-top: 1px solid var(--rule); margin-top: 48px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .hero { padding: 100px 24px 48px; }
+      .main-wrap { padding: 32px 24px 64px; }
+      .hero-stats { flex-wrap: wrap; gap: 24px; }
+      .mapping-grid { grid-template-columns: 1fr; }
+      .obj-header { grid-template-columns: 80px 1fr; }
+      .obj-stage { display: none; }
+      .obj-detail { padding-left: 0; }
+      footer { padding: 24px; flex-direction: column; gap: 12px; }
+    }
+
+    /* DARK MODE */
+    @media (prefers-color-scheme: dark) {
+      :root { --ink: #e8e4dc; --paper: #141412; --rule: #2e2c28; --muted: #8a8680; }
+      nav { background: #141412; }
+      .mode-btn.active { background: var(--ink); color: #141412; }
+      .fw-tab.active { background: var(--ink); color: #141412; border-color: var(--ink); }
+      .mode-btn:hover:not(.active) { background: #1c1b18; }
+      .fw-tab:hover:not(.active) { color: var(--ink); }
+      .stage-evolving { color: #f59e0b; }
+      .stage-embedded { color: #10b981; }
+      footer { background: #141412; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Invictera</a>
+  <div style="display:flex;gap:36px;">
+    <a href="/" class="nav-back">Home</a>
+    <a href="/#apps" class="nav-back">Apps</a>
+    <a href="/#services" class="nav-back">Advisory</a>
+    <a href="/#contact" class="nav-back">Contact</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <p class="hero-eyebrow">Standards &amp; Frameworks</p>
+  <h1 class="hero-title">AI Governance <em>Cross-Framework Mapping</em></h1>
+  <p class="hero-body">An interactive reference mapping the CRI Financial Services AI Risk Management Framework's 230 control objectives to NIST AI RMF, EU AI Act, ISO 42001, SR 11-7, Colorado AI Act, OECD AI Principles, and other regulatory frameworks. Navigate by control objective or by regulation.</p>
+  <div class="hero-stats">
+    <div><div class="hero-stat-n">230</div><div class="hero-stat-l">Control Objectives</div></div>
+    <div><div class="hero-stat-n">13</div><div class="hero-stat-l">Mapped Frameworks</div></div>
+    <div><div class="hero-stat-n">4</div><div class="hero-stat-l">Adoption Stages</div></div>
+    <div><div class="hero-stat-n">108</div><div class="hero-stat-l">Contributing Institutions</div></div>
+  </div>
+</div>
+
+<div class="main-wrap">
+
+  <!-- MODE TOGGLE -->
+  <div class="mode-bar">
+    <button class="mode-btn active" onclick="setMode('objective')">By CRI Objective</button>
+    <button class="mode-btn" onclick="setMode('framework')">By Framework</button>
+  </div>
+
+  <!-- OBJECTIVE VIEW -->
+  <div id="view-objective">
+    <div class="search-wrap">
+      <input class="search-input" type="text" placeholder="Search by ID, name, or keyword (e.g. GV-1.6, inventory, bias, vendor)" oninput="filterObjectives(this.value)">
+    </div>
+    <div class="fw-tabs" id="stage-filter">
+      <button class="fw-tab active" onclick="filterStage('all', this)">All Stages</button>
+      <button class="fw-tab" onclick="filterStage('initial', this)">Initial (21)</button>
+      <button class="fw-tab" onclick="filterStage('minimal', this)">Minimal (126)</button>
+      <button class="fw-tab" onclick="filterStage('evolving', this)">Evolving (193)</button>
+      <button class="fw-tab" onclick="filterStage('embedded', this)">Embedded (230)</button>
+    </div>
+    <div id="obj-list"></div>
+  </div>
+
+  <!-- FRAMEWORK VIEW -->
+  <div id="view-framework" style="display:none;">
+    <div class="fw-tabs" id="fw-filter"></div>
+    <div id="fw-content"></div>
+  </div>
+
+  <div class="source-note">
+    <strong>Sources.</strong> CRI FS AI RMF v1.0 (Feb 2026), Cyber Risk Institute, in coordination with 108 financial institutions, FSSCC, and the U.S. Treasury. Cross-framework mappings synthesized from the CRI Risk and Control Matrix, KPMG Deconstruction Guide, FTI Consulting analysis, Lowenstein Sandler legal commentary, and NIST AI RMF Playbook. Control objective descriptions are consistent with public commentary on the RCM. This reference is provided for educational and professional development purposes. Download the full RCM at <a href="https://cyberriskinstitute.org/artificial-intelligence-risk-management/" target="_blank" style="color: var(--ink);">cyberriskinstitute.org</a>.
+  </div>
+</div>
+
+<footer>
+  <span class="footer-logo">Invictera</span>
+  <ul class="footer-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/#apps">Apps</a></li>
+    <li><a href="/#services">Advisory</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="terms.html">Terms</a></li>
+    <li><a href="disclosures.html">Disclosures</a></li>
+  </ul>
+  <span class="footer-copy">© 2026 Invictera LLC</span>
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// DATA LAYER — Replace this section with Gemini Deep Research output
+// Each objective: { id, name, desc, stage, function, category, mappings: { nist, eu_ai_act, iso42001, sr117, colorado, oecd, cfpb, interagency, ffiec, ecoa, ll144 } }
+// ═══════════════════════════════════════════════════════════════
+
+const FRAMEWORKS = [
+  { key: "nist", label: "NIST AI RMF", desc: "Voluntary US framework (Jan 2023). Four functions: Govern, Map, Measure, Manage. Parent framework for CRI FS AI RMF." },
+  { key: "eu_ai_act", label: "EU AI Act", desc: "Regulation 2024/1689. Risk-based classification. Articles 6-15 (high-risk), Article 4 (AI literacy), Article 50 (transparency)." },
+  { key: "iso42001", label: "ISO 42001", desc: "AI Management System standard (Dec 2023). Clauses 4-10 and Annex A controls. Certifiable." },
+  { key: "sr117", label: "SR 11-7 / OCC 2011-12", desc: "Fed/OCC model risk management guidance (2011). Conceptual soundness, outcomes analysis, ongoing monitoring." },
+  { key: "colorado", label: "Colorado AI Act", desc: "SB 24-205 (effective Feb 2026). Developer/deployer obligations for high-risk AI. Impact assessments, disclosures." },
+  { key: "oecd", label: "OECD AI Principles", desc: "Five principles (2019, updated 2024): inclusive growth, human-centered values, transparency, robustness, accountability." },
+  { key: "cfpb", label: "CFPB Circular 2022-03", desc: "Adverse action and AI. 'The algorithm decided' is not sufficient under ECOA." },
+  { key: "interagency", label: "Interagency Third-Party (2023)", desc: "Fed/OCC/FDIC joint guidance on third-party relationships. Full lifecycle: planning through termination." },
+  { key: "ffiec", label: "FFIEC / NIST CSF 2.0", desc: "Information security examination standards and cybersecurity framework for financial institutions." },
+  { key: "ecoa", label: "ECOA / Reg B / FCRA", desc: "Fair lending, adverse action notices, consumer reporting obligations for credit-decisioning AI." },
+  { key: "nist600", label: "NIST AI 600-1", desc: "Generative AI Profile. Extends NIST AI RMF for GenAI-specific risks." },
+  { key: "ll144", label: "NYC Local Law 144", desc: "Automated employment decision tools. Bias audit requirements." },
+  { key: "gdpr", label: "GDPR", desc: "EU General Data Protection Regulation. Articles 35 (DPIA), 28 (sub-processors), data subject rights." },
+];
+
+const OBJECTIVES = [
+  // ══════════ GOVERN ══════════
+  { id:"GV-1.1.1", name:"AI Legal, Regulatory & Policy Integration", desc:"Identify, monitor, and integrate applicable laws, regulations, contractual obligations, and sector requirements into AI policies and operations. Update governance artifacts as requirements evolve.", stage:"initial", fn:"GV", cat:"GV-1", mappings:{ nist:"Govern 1.1", eu_ai_act:"Art. 9(1), Art. 17", iso42001:"6.1.3, A.3.2", sr117:"Governance & Controls", colorado:"§6-1-1703(1)", oecd:"Accountability", cfpb:"—", ecoa:"—" }},
+  { id:"GV-1.1.2", name:"AI Regulatory Monitoring", desc:"Establish processes to continuously track emerging AI regulations, guidance, and supervisory expectations across all applicable jurisdictions.", stage:"minimal", fn:"GV", cat:"GV-1", mappings:{ nist:"Govern 1.1", eu_ai_act:"Art. 9(1)", iso42001:"A.3.2", colorado:"§6-1-1703(1)" }},
+  { id:"GV-1.1.3", name:"Compliance Validation", desc:"Validate that AI systems and processes comply with applicable regulatory requirements through periodic assessment and testing.", stage:"evolving", fn:"GV", cat:"GV-1", mappings:{ nist:"Govern 1.1", eu_ai_act:"Art. 9(8), Art. 43", iso42001:"9.1, 9.2", sr117:"Independent Review" }},
+  { id:"GV-1.1.6", name:"Data Lifecycle & Retention", desc:"Define and enforce data lifecycle policies including retention, deletion, and archival requirements for AI training data, model outputs, and decision logs.", stage:"minimal", fn:"GV", cat:"GV-1", mappings:{ nist:"Govern 1.5", eu_ai_act:"Art. 12", iso42001:"A.7.4", gdpr:"Art. 5(1)(e), Art. 17", ecoa:"Recordkeeping (25yr)" }},
+  { id:"GV-1.2.1", name:"AI Governance Policy Framework", desc:"Establish and maintain a comprehensive AI governance policy framework covering development, deployment, monitoring, and decommissioning.", stage:"initial", fn:"GV", cat:"GV-1", mappings:{ nist:"Govern 1.2", eu_ai_act:"Art. 9", iso42001:"5.2, A.2.2", sr117:"Governance & Controls" }},
+  { id:"GV-1.2.3", name:"Acceptable Use Policy", desc:"Define acceptable and prohibited uses of AI systems, including third-party AI tools, with clear boundaries for employees and business units.", stage:"minimal", fn:"GV", cat:"GV-1", mappings:{ nist:"Govern 1.2", eu_ai_act:"Art. 4, Art. 26", iso42001:"A.4.1" }},
+  { id:"GV-1.2.4", name:"AI Ethics & Responsible AI Principles", desc:"Codify organizational principles for responsible AI including fairness, transparency, accountability, and human oversight.", stage:"minimal", fn:"GV", cat:"GV-1", mappings:{ nist:"Govern 1.3", eu_ai_act:"Art. 14, Art. 15", iso42001:"A.2.3", oecd:"All five principles" }},
+  { id:"GV-1.3.1", name:"Risk Tiering Framework", desc:"Establish a risk classification framework that assigns AI systems to governance tiers based on impact, data sensitivity, autonomy level, and regulatory exposure.", stage:"initial", fn:"GV", cat:"GV-1", mappings:{ nist:"Govern 1.4", eu_ai_act:"Art. 6, Annex III", iso42001:"A.5.2", sr117:"Model Tiering", colorado:"§6-1-1702(1) (high-risk definition)" }},
+  { id:"GV-1.4.1", name:"Model Documentation Standards", desc:"Define documentation requirements for AI/ML models including purpose, design decisions, training data, known limitations, and validation results.", stage:"minimal", fn:"GV", cat:"GV-1", mappings:{ nist:"Govern 1.5", eu_ai_act:"Art. 11, Annex IV", iso42001:"A.6.2.3", sr117:"Documentation" }},
+  { id:"GV-1.5.1", name:"AI Incident Response Plan", desc:"Develop and maintain an incident response plan specific to AI system failures, including escalation paths, communication protocols, and remediation procedures.", stage:"minimal", fn:"GV", cat:"GV-1", mappings:{ nist:"Govern 1.5", eu_ai_act:"Art. 62", iso42001:"A.10.3", ffiec:"Incident Response" }},
+  { id:"GV-1.6.1", name:"Enterprise AI Inventory", desc:"Maintain a comprehensive inventory of every AI model, algorithm, data pipeline, and third-party AI service in use across the organization.", stage:"initial", fn:"GV", cat:"GV-1", mappings:{ nist:"Govern 1.6", eu_ai_act:"Art. 49 (EU database)", iso42001:"A.5.3", sr117:"Model Inventory", colorado:"§6-1-1703(3)" }},
+  { id:"GV-1.6.2", name:"Shadow AI Detection", desc:"Implement processes to discover and catalog unauthorized or undocumented AI usage across business units.", stage:"minimal", fn:"GV", cat:"GV-1", mappings:{ nist:"Govern 1.6", iso42001:"A.5.3" }},
+  { id:"GV-1.6.5", name:"Third-Party AI Inventory Integration", desc:"Include vendor-deployed AI, purchased AI products, and employee productivity AI tools in the enterprise inventory.", stage:"minimal", fn:"GV", cat:"GV-1", mappings:{ nist:"Govern 6.1", interagency:"Planning & Due Diligence" }},
+  { id:"GV-2.1.1", name:"AI Steering Committee", desc:"Establish an AI governance committee or steering body with defined charter, membership, meeting cadence, and decision authority.", stage:"initial", fn:"GV", cat:"GV-2", mappings:{ nist:"Govern 2.1", iso42001:"5.1, 5.3", sr117:"Governance & Controls", oecd:"Accountability" }},
+  { id:"GV-2.1.2", name:"Board-Level AI Oversight", desc:"Ensure board or board committee receives regular reporting on AI risk posture, material AI incidents, and governance program maturity.", stage:"minimal", fn:"GV", cat:"GV-2", mappings:{ nist:"Govern 2.1", eu_ai_act:"Art. 26(5)", iso42001:"5.1" }},
+  { id:"GV-2.2.1", name:"AI System Ownership Assignment", desc:"Assign a named owner to each AI system responsible for its governance, performance, and compliance throughout its lifecycle.", stage:"initial", fn:"GV", cat:"GV-2", mappings:{ nist:"Govern 2.2", iso42001:"5.3", sr117:"Roles & Responsibilities" }},
+  { id:"GV-3.1.1", name:"AI Literacy Program", desc:"Establish role-appropriate AI literacy training for all personnel involved in AI development, deployment, oversight, or use. Aligns with EU AI Act Article 4.", stage:"minimal", fn:"GV", cat:"GV-3", mappings:{ nist:"Govern 3.1", eu_ai_act:"Art. 4", iso42001:"7.2, 7.3", oecd:"Human-centered values" }},
+  { id:"GV-3.2.1", name:"Human-AI Supervision Policies", desc:"Define when and how human oversight, review, or intervention is required for AI-driven decisions, particularly for high-risk or consumer-impacting use cases.", stage:"minimal", fn:"GV", cat:"GV-3", mappings:{ nist:"Govern 3.2", eu_ai_act:"Art. 14", iso42001:"A.8.2", colorado:"§6-1-1703(4)" }},
+  { id:"GV-3.2.2", name:"Override & Appeal Mechanisms", desc:"Establish mechanisms for human override of AI decisions and for affected individuals to appeal or contest AI-driven outcomes.", stage:"evolving", fn:"GV", cat:"GV-3", mappings:{ nist:"Govern 3.2", eu_ai_act:"Art. 14(4), Art. 86", colorado:"§6-1-1704(1)", ecoa:"Adverse action rights" }},
+  { id:"GV-4.1.1", name:"ERM Integration", desc:"Integrate AI risk into the enterprise risk management framework, including risk appetite, risk reporting, and governance structures.", stage:"minimal", fn:"GV", cat:"GV-4", mappings:{ nist:"Govern 4.1", iso42001:"6.1, A.2.4" }},
+  { id:"GV-5.1.1", name:"Consumer Impact Assessment", desc:"Assess and document the potential impact of AI systems on consumers, including fairness, transparency, and adverse action implications.", stage:"minimal", fn:"GV", cat:"GV-5", mappings:{ nist:"Govern 5.1", eu_ai_act:"Art. 9(2)", colorado:"§6-1-1703(2) (impact assessment)", oecd:"Inclusive growth", ecoa:"Disparate impact" }},
+  { id:"GV-6.1.1", name:"Third-Party AI Evaluation & Selection", desc:"Evaluate and select third-party AI providers using criteria covering model governance, data practices, security, transparency, and contractual protections.", stage:"minimal", fn:"GV", cat:"GV-6", mappings:{ nist:"Govern 6.1", eu_ai_act:"Art. 28", iso42001:"A.10.2", interagency:"Due Diligence", sr117:"Vendor Model Mgmt" }},
+  { id:"GV-6.1.5", name:"Third-Party AI Risk Documentation", desc:"Maintain comprehensive documentation of third-party AI risks, including vendor assessments, contractual protections, and ongoing monitoring results.", stage:"minimal", fn:"GV", cat:"GV-6", mappings:{ nist:"Govern 6.1", interagency:"Due Diligence & Contract" }},
+  { id:"GV-6.2.1", name:"AI-Specific Contractual Protections", desc:"Include AI-specific provisions in vendor contracts covering model transparency, audit rights, data handling, incident notification, and performance guarantees.", stage:"minimal", fn:"GV", cat:"GV-6", mappings:{ nist:"Govern 6.2", interagency:"Contract Negotiation", gdpr:"Art. 28 (DPA)" }},
+  { id:"GV-6.2.3", name:"Service Level Agreements", desc:"Establish and enforce SLAs with AI vendors covering availability, accuracy, response times, and incident handling.", stage:"minimal", fn:"GV", cat:"GV-6", mappings:{ nist:"Govern 6.2", interagency:"Ongoing Monitoring" }},
+
+  // ══════════ MAP ══════════
+  { id:"MP-1.1.1", name:"Business Purpose Documentation", desc:"Document the specific business purpose, intended use, and expected outcomes for each AI system.", stage:"initial", fn:"MP", cat:"MP-1", mappings:{ nist:"Map 1.1", eu_ai_act:"Art. 9(2)(a), Annex IV(1)", iso42001:"A.5.2", sr117:"Model Development" }},
+  { id:"MP-1.2.1", name:"Impacted Population Mapping", desc:"Identify all populations directly or indirectly affected by AI system outputs, including consumers, employees, and third parties.", stage:"minimal", fn:"MP", cat:"MP-1", mappings:{ nist:"Map 1.5", eu_ai_act:"Art. 9(2)(a)", colorado:"§6-1-1703(2)", oecd:"Human-centered values" }},
+  { id:"MP-2.1.1", name:"AI Risk Taxonomy", desc:"Apply a structured risk taxonomy covering bias, opacity, security, reliability, privacy, and systemic risks to each AI system.", stage:"minimal", fn:"MP", cat:"MP-2", mappings:{ nist:"Map 2.1", iso42001:"A.5.4", sr117:"Risk Identification" }},
+  { id:"MP-3.1.1", name:"Training Data Documentation", desc:"Document data sources, collection methods, preprocessing steps, and known limitations for all AI training data.", stage:"minimal", fn:"MP", cat:"MP-3", mappings:{ nist:"Map 3.4", eu_ai_act:"Art. 10, Annex IV(2-3)", iso42001:"A.7.2, A.7.3" }},
+  { id:"MP-3.1.2", name:"Data Lineage Tracking", desc:"Implement data lineage tracking from source systems through feature engineering, training, and inference.", stage:"evolving", fn:"MP", cat:"MP-3", mappings:{ nist:"Map 3.4", eu_ai_act:"Art. 10(2)", iso42001:"A.7.4" }},
+  { id:"MP-3.1.5", name:"Data Sensitivity Classification", desc:"Classify data used in AI systems by sensitivity level including PII, protected class attributes, financial data, and regulated information. Tag at ingestion.", stage:"minimal", fn:"MP", cat:"MP-3", mappings:{ nist:"Map 3.4", gdpr:"Art. 9 (special categories)", ffiec:"Data Classification" }},
+  { id:"MP-3.2.1", name:"Privacy Impact Assessment for AI", desc:"Conduct privacy impact assessments for AI systems processing personal data, including DPIA requirements under GDPR and state privacy laws.", stage:"minimal", fn:"MP", cat:"MP-3", mappings:{ nist:"Map 5.1", eu_ai_act:"Art. 27 (FRIA)", gdpr:"Art. 35 (DPIA)", iso42001:"A.4.6" }},
+  { id:"MP-5.1.1", name:"Fundamental Rights Impact Assessment", desc:"Conduct impact assessments for AI systems that may affect fundamental rights, aligned with FRIA requirements under EU AI Act for applicable systems.", stage:"evolving", fn:"MP", cat:"MP-5", mappings:{ nist:"Map 5.1", eu_ai_act:"Art. 27", colorado:"§6-1-1703(2)" }},
+  { id:"MP-5.1.2", name:"Fair Lending Impact Analysis", desc:"For credit-decisioning AI, conduct fair lending impact analysis across protected classes under ECOA, including disparate impact testing.", stage:"minimal", fn:"MP", cat:"MP-5", mappings:{ nist:"Map 5.2", ecoa:"ECOA §701, Reg B", cfpb:"Circular 2022-03" }},
+
+  // ══════════ MEASURE ══════════
+  { id:"MS-1.1.1", name:"Independent Model Validation", desc:"Conduct independent validation of AI models with appropriate separation between development and validation functions (SR 11-7 alignment).", stage:"minimal", fn:"MS", cat:"MS-1", mappings:{ nist:"Measure 1.1", sr117:"Effective Challenge / Independent Validation", iso42001:"A.6.2.5" }},
+  { id:"MS-1.1.2", name:"Conceptual Soundness Review", desc:"Assess whether the modeling approach, assumptions, and design are appropriate for the intended use case.", stage:"minimal", fn:"MS", cat:"MS-1", mappings:{ nist:"Measure 1.1", sr117:"Conceptual Soundness", iso42001:"A.6.2.2" }},
+  { id:"MS-1.1.5", name:"GenAI-Specific Evaluation", desc:"Apply evaluation methods specific to generative AI including hallucination detection, factual grounding assessment, and harmful output testing.", stage:"evolving", fn:"MS", cat:"MS-1", mappings:{ nist:"Measure 1.1", nist600:"GAI evaluation actions", eu_ai_act:"Art. 15(4)" }},
+  { id:"MS-2.1.1", name:"Bias Detection & Measurement", desc:"Apply quantitative bias detection methods across protected classes using appropriate fairness metrics (demographic parity, equalized odds, predictive parity).", stage:"minimal", fn:"MS", cat:"MS-2", mappings:{ nist:"Measure 2.6", eu_ai_act:"Art. 10(2)(f)", iso42001:"A.9.3", ecoa:"Disparate impact testing", ll144:"Bias audit", colorado:"§6-1-1703(2)(c)" }},
+  { id:"MS-2.1.4", name:"Pre-Deployment Fairness Testing", desc:"Complete fairness testing before production deployment with documented pass/fail criteria and remediation requirements.", stage:"minimal", fn:"MS", cat:"MS-2", mappings:{ nist:"Measure 2.6", eu_ai_act:"Art. 9(7)", sr117:"Pre-use validation", ll144:"Annual bias audit" }},
+  { id:"MS-2.2.1", name:"Explainability Thresholds", desc:"Define explainability requirements proportional to risk tier, with higher thresholds for consumer-impacting and regulated decisions.", stage:"minimal", fn:"MS", cat:"MS-2", mappings:{ nist:"Measure 2.7", eu_ai_act:"Art. 13", iso42001:"A.8.4", oecd:"Transparency" }},
+  { id:"MS-2.2.3", name:"Adverse Action Notice Compliance", desc:"For credit-decisioning AI, ensure explainability outputs satisfy adverse action notice requirements under ECOA/Reg B and FCRA.", stage:"minimal", fn:"MS", cat:"MS-2", mappings:{ nist:"Measure 2.7", cfpb:"Circular 2022-03", ecoa:"Reg B §1002.9" }},
+  { id:"MS-2.3.1", name:"AI Security Assessment", desc:"Conduct security assessments specific to AI systems including adversarial input testing, data poisoning detection, and model extraction prevention.", stage:"minimal", fn:"MS", cat:"MS-2", mappings:{ nist:"Measure 2.8", eu_ai_act:"Art. 15", iso42001:"A.9.4", ffiec:"Vulnerability Assessment" }},
+  { id:"MS-2.3.2", name:"Prompt Injection & Manipulation Testing", desc:"For LLM-based systems, test for prompt injection, jailbreaking, and manipulation vulnerabilities.", stage:"evolving", fn:"MS", cat:"MS-2", mappings:{ nist:"Measure 2.8", nist600:"GAI security actions", eu_ai_act:"Art. 15(4)" }},
+  { id:"MS-2.4.1", name:"Production Performance Monitoring", desc:"Monitor AI system performance in production against defined accuracy, reliability, and quality metrics.", stage:"minimal", fn:"MS", cat:"MS-2", mappings:{ nist:"Measure 2.5", eu_ai_act:"Art. 9(9), Art. 72", iso42001:"A.8.5", sr117:"Ongoing Monitoring" }},
+  { id:"MS-2.4.2", name:"Drift Detection", desc:"Implement detection for data drift, concept drift, and model performance degradation over time.", stage:"evolving", fn:"MS", cat:"MS-2", mappings:{ nist:"Measure 2.5", sr117:"Ongoing Monitoring", iso42001:"A.8.5" }},
+  { id:"MS-3.1.1", name:"AI Key Risk Indicators", desc:"Define and track KRIs specific to AI systems including model performance metrics, fairness metrics, incident rates, and compliance metrics.", stage:"evolving", fn:"MS", cat:"MS-3", mappings:{ nist:"Measure 3.2", iso42001:"9.1" }},
+
+  // ══════════ MANAGE ══════════
+  { id:"MG-1.1.1", name:"Risk Treatment Plans", desc:"Develop and implement risk treatment plans for identified AI risks specifying mitigation actions, owners, timelines, and residual risk acceptance.", stage:"minimal", fn:"MG", cat:"MG-1", mappings:{ nist:"Manage 1.1", iso42001:"A.10.1", sr117:"Risk Mitigation" }},
+  { id:"MG-3.1.1", name:"Continuous Monitoring Framework", desc:"Implement continuous monitoring of AI systems in production covering performance, fairness, data quality, and security.", stage:"minimal", fn:"MG", cat:"MG-3", mappings:{ nist:"Manage 3.1", eu_ai_act:"Art. 9(9), Art. 72", iso42001:"A.8.5", sr117:"Ongoing Monitoring" }},
+  { id:"MG-3.1.2", name:"Fair Lending Monitoring", desc:"For credit AI, conduct ongoing fair lending monitoring at defined intervals (30, 60, 90 days post-launch and continuously thereafter).", stage:"evolving", fn:"MG", cat:"MG-3", mappings:{ nist:"Manage 3.1", ecoa:"Ongoing compliance", cfpb:"Circular 2022-03" }},
+  { id:"MG-3.2.2", name:"Model Decommissioning", desc:"Define and follow structured decommissioning procedures for AI models that no longer meet performance, fairness, or compliance standards.", stage:"evolving", fn:"MG", cat:"MG-3", mappings:{ nist:"Manage 3.2", iso42001:"A.6.2.8", sr117:"Model Retirement" }},
+  { id:"MG-3.2.3", name:"Version Control & Rollback", desc:"Maintain version control for AI models with tested rollback procedures to prior versions if production issues arise.", stage:"minimal", fn:"MG", cat:"MG-3", mappings:{ nist:"Manage 3.2", eu_ai_act:"Art. 12", iso42001:"A.6.2.4" }},
+  { id:"MG-4.1.1", name:"AI Incident Detection", desc:"Implement automated detection of AI incidents including unexpected output patterns, performance anomalies, and security events.", stage:"minimal", fn:"MG", cat:"MG-4", mappings:{ nist:"Manage 4.1", eu_ai_act:"Art. 62", iso42001:"A.10.3", ffiec:"Incident Detection" }},
+  { id:"MG-4.1.4", name:"Consumer Remediation", desc:"Define procedures for consumer remediation when AI-driven decisions cause harm, including notification, correction, and redress.", stage:"evolving", fn:"MG", cat:"MG-4", mappings:{ nist:"Manage 4.2", eu_ai_act:"Art. 86", colorado:"§6-1-1704(2)", ecoa:"Corrective action" }},
+  { id:"MG-4.1.6", name:"Incident Response Procedures", desc:"Maintain and periodically test AI-specific incident response procedures including communication protocols, decision trees, and escalation paths.", stage:"minimal", fn:"MG", cat:"MG-4", mappings:{ nist:"Manage 4.1", iso42001:"A.10.3", ffiec:"Incident Response" }},
+];
+
+// ═══════════════════════════════════════════════════════════════
+// END DATA LAYER
+// ═══════════════════════════════════════════════════════════════
+
+const FN_META = {
+  GV: { label:"Govern", badge:"fn-badge-gv", color:"var(--gov)" },
+  MP: { label:"Map", badge:"fn-badge-mp", color:"var(--map)" },
+  MS: { label:"Measure", badge:"fn-badge-ms", color:"var(--msr)" },
+  MG: { label:"Manage", badge:"fn-badge-mg", color:"var(--mgr)" },
+};
+
+let currentMode = 'objective';
+let currentStage = 'all';
+let currentSearch = '';
+let currentFw = 'nist';
+
+function setMode(mode) {
+  currentMode = mode;
+  document.querySelectorAll('.mode-btn').forEach((b,i) => b.classList.toggle('active', (mode==='objective'?0:1)===i));
+  document.getElementById('view-objective').style.display = mode==='objective'?'':'none';
+  document.getElementById('view-framework').style.display = mode==='framework'?'':'none';
+  if (mode==='framework') renderFrameworkView();
+}
+
+function filterStage(stage, btn) {
+  currentStage = stage;
+  document.querySelectorAll('#stage-filter .fw-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderObjectiveView();
+}
+
+function filterObjectives(q) {
+  currentSearch = q.toLowerCase();
+  renderObjectiveView();
+}
+
+function toggleObj(el) {
+  el.closest('.obj-row').classList.toggle('open');
+}
+
+function renderObjectiveView() {
+  let filtered = OBJECTIVES.filter(o => {
+    if (currentStage !== 'all' && o.stage !== currentStage) {
+      const order = ['initial','minimal','evolving','embedded'];
+      if (order.indexOf(o.stage) > order.indexOf(currentStage)) return false;
+    }
+    if (currentSearch) {
+      const s = currentSearch;
+      return o.id.toLowerCase().includes(s) || o.name.toLowerCase().includes(s) || o.desc.toLowerCase().includes(s);
+    }
+    return true;
+  });
+
+  let html = '';
+  let lastFn = '';
+  for (const o of filtered) {
+    if (o.fn !== lastFn) {
+      const m = FN_META[o.fn];
+      const cnt = filtered.filter(x=>x.fn===o.fn).length;
+      html += `<div class="fn-header"><span class="fn-badge ${m.badge}">${o.fn}</span><span class="fn-name">${m.label}</span><span class="fn-count">${cnt} shown</span></div>`;
+      lastFn = o.fn;
+    }
+    html += renderObjRow(o);
+  }
+  if (!filtered.length) html = '<div class="empty-state"><p>No control objectives match the current filters.</p></div>';
+  document.getElementById('obj-list').innerHTML = html;
+}
+
+function renderObjRow(o) {
+  const mappingHtml = Object.entries(o.mappings||{}).filter(([k,v])=>v&&v!=='—').map(([k,v]) => {
+    const fw = FRAMEWORKS.find(f=>f.key===k);
+    return `<div class="mapping-item"><div class="mapping-fw">${fw?fw.label:k}</div><div class="mapping-ref">${v}</div></div>`;
+  }).join('');
+  return `<div class="obj-row">
+    <div class="obj-header" onclick="toggleObj(this)">
+      <span class="obj-id">${o.id}</span>
+      <span class="obj-name">${o.name}</span>
+      <span class="obj-stage stage-${o.stage}">${o.stage}</span>
+    </div>
+    <div class="obj-detail">
+      <p class="obj-desc">${o.desc}</p>
+      ${mappingHtml ? `<div class="mapping-grid">${mappingHtml}</div>` : '<p class="mapping-none">Cross-framework mappings pending Gemini Deep Research output.</p>'}
+    </div>
+  </div>`;
+}
+
+function renderFrameworkView() {
+  // Build framework tabs
+  let tabHtml = FRAMEWORKS.map(f =>
+    `<button class="fw-tab ${f.key===currentFw?'active':''}" onclick="selectFw('${f.key}', this)">${f.label}</button>`
+  ).join('');
+  document.getElementById('fw-filter').innerHTML = tabHtml;
+  renderFwContent();
+}
+
+function selectFw(key, btn) {
+  currentFw = key;
+  document.querySelectorAll('#fw-filter .fw-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderFwContent();
+}
+
+function renderFwContent() {
+  const fw = FRAMEWORKS.find(f=>f.key===currentFw);
+  const matched = OBJECTIVES.filter(o => o.mappings && o.mappings[currentFw] && o.mappings[currentFw]!=='—');
+
+  let html = `<div class="fw-section"><p class="fw-section-desc" style="margin-top:8px;">${fw.desc}</p>
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:20px;">${matched.length} CRI control objectives map to this framework.</p></div>`;
+
+  // Group by reference value
+  const groups = {};
+  for (const o of matched) {
+    const ref = o.mappings[currentFw];
+    if (!groups[ref]) groups[ref] = [];
+    groups[ref].push(o);
+  }
+
+  for (const [ref, objs] of Object.entries(groups)) {
+    html += `<div class="fw-section"><div class="fw-section-title">${ref}</div>`;
+    for (const o of objs) {
+      html += `<div class="obj-row"><div class="obj-header" onclick="toggleObj(this)">
+        <span class="obj-id">${o.id}</span><span class="obj-name">${o.name}</span><span class="obj-stage stage-${o.stage}">${o.stage}</span>
+      </div><div class="obj-detail"><p class="obj-desc">${o.desc}</p></div></div>`;
+    }
+    html += '</div>';
+  }
+
+  if (!matched.length) html += '<div class="empty-state"><p>No mapped control objectives found for this framework yet. Data will expand when the full mapping is integrated.</p></div>';
+  document.getElementById('fw-content').innerHTML = html;
+}
+
+// INIT
+renderObjectiveView();
+</script>
+
+</body>
+</html>
