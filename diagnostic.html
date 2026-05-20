@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3-Week SR 26-2 Readiness Diagnostic — Invictera</title>
+  <meta name="description" content="A rapid, fixed-fee diagnostic mapping your institution's AI governance posture against SR 26-2, the CRI FS AI RMF, and 20 regulatory frameworks. Delivered in three weeks.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --ink: #0f0f0e; --paper: #f8f6f1; --rule: #d8d3c8; --muted: #6b6760; --serif: 'EB Garamond', Georgia, serif; --sans: 'DM Sans', system-ui, sans-serif; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; background: var(--paper); border-bottom: 1px solid var(--rule); z-index: 100; padding: 0 48px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--serif); font-size: 1.25rem; font-weight: 500; letter-spacing: 0.04em; text-decoration: none; color: var(--ink); }
+    .nav-back { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+    .nav-back:hover { color: var(--ink); }
+
+    .page-wrap { max-width: 760px; margin: 0 auto; padding: 120px 48px 96px; }
+    .page-eyebrow { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; }
+    .page-title { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 400; line-height: 1.15; margin-bottom: 20px; }
+    .page-title em { font-style: italic; color: var(--muted); }
+    .page-subtitle { font-size: 1.05rem; color: var(--muted); line-height: 1.8; font-weight: 300; margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--rule); }
+
+    h2 { font-family: var(--serif); font-size: 1.35rem; font-weight: 500; margin: 56px 0 16px; }
+    h3 { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; margin: 32px 0 10px; color: var(--ink); }
+    p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 14px; font-weight: 300; }
+    p strong { color: var(--ink); font-weight: 500; }
+    a { color: var(--ink); }
+
+    .urgency-box { background: #f0ede5; border-left: 3px solid var(--rule); padding: 24px 28px; margin-bottom: 48px; }
+    .urgency-box p { margin-bottom: 8px; }
+    .urgency-box p:last-child { margin-bottom: 0; }
+
+    .timeline { border-top: 1px solid var(--rule); margin: 32px 0; }
+    .timeline-phase { display: grid; grid-template-columns: 100px 1fr; gap: 32px; padding: 28px 0; border-bottom: 1px solid var(--rule); }
+    .phase-label { font-family: var(--serif); font-size: 0.85rem; color: var(--muted); font-style: italic; padding-top: 3px; }
+    .phase-title { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; margin-bottom: 8px; color: var(--ink); }
+    .phase-body { font-size: 0.9rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+
+    .deliverables-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 24px 0 48px; }
+    .deliverable { background: var(--paper); padding: 24px 20px; }
+    .deliverable-num { font-family: var(--serif); font-size: 1.4rem; color: var(--muted); font-style: italic; margin-bottom: 8px; }
+    .deliverable-name { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; margin-bottom: 8px; }
+    .deliverable-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
+
+    .cta-section { border-top: 1px solid var(--rule); padding-top: 48px; margin-top: 56px; text-align: center; }
+    .cta-section h2 { margin-top: 0; }
+    .cta-link { display: inline-flex; align-items: center; gap: 12px; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); text-decoration: none; font-weight: 500; border-bottom: 1px solid var(--ink); padding-bottom: 4px; transition: gap 0.2s; }
+    .cta-link:hover { gap: 20px; }
+    .cta-link::after { content: '→'; }
+
+    .proof-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 24px 0; }
+    .proof-item { background: var(--paper); padding: 24px 20px; text-align: center; }
+    .proof-num { font-family: var(--serif); font-size: 2rem; color: var(--ink); }
+    .proof-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+
+    footer { border-top: 1px solid var(--rule); padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { font-family: var(--serif); font-size: 1rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--ink); }
+    .footer-copy { font-size: 0.75rem; color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 24px; }
+      .page-wrap { padding: 100px 24px 64px; }
+      .timeline-phase { grid-template-columns: 1fr; gap: 8px; }
+      .phase-label { font-size: 0.72rem; }
+      .deliverables-grid { grid-template-columns: 1fr; }
+      .proof-grid { grid-template-columns: 1fr; }
+      footer { padding: 24px; flex-direction: column; gap: 12px; }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root { --ink: #e8e4dc; --paper: #141412; --rule: #2e2c28; --muted: #8a8680; }
+      nav { background: #141412; }
+      .urgency-box { background: #1c1b18; border-left-color: #2e2c28; }
+      .deliverable { background: #141412; }
+      .proof-item { background: #141412; }
+      footer { background: #141412; }
+    }
+  </style>
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog&&window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="vi init Ti Ci ft Ri Oi ki capture calculateEventProperties Li register register_once register_for_session unregister unregister_for_session zi getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty Ni Ai createPersonProfile setInternalOrTestUser Ui Si Hi opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Fi debug bt ji getPageViewId captureTraceFeedback captureTraceMetric wi".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_lD3VY4M5qZkTWhpnOjdAvmtsIwtU75xt6YFPZ7a4bUy',{api_host:'https://k.invictera.com',ui_host:'https://us.posthog.com',defaults:'2026-01-30',person_profiles:'always'});
+  </script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Invictera</a>
+  <div style="display:flex;gap:36px;">
+    <a href="/" class="nav-back">Home</a>
+    <a href="crosswalk.html" class="nav-back">Frameworks</a>
+    <a href="diagnostic.html" class="nav-back">Diagnostic</a>
+    <a href="/#contact" class="nav-back">Contact</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <p class="page-eyebrow">Engagement Overview</p>
+  <h1 class="page-title">3-Week SR 26-2 <em>&amp; CRI FS AI RMF</em> Readiness Diagnostic</h1>
+  <p class="page-subtitle">A rapid, fixed-fee assessment that maps your institution's AI governance posture against the revised federal model risk guidance and the financial sector's 230-control-objective framework. Delivered in three weeks. Board-ready on day twenty-one.</p>
+
+  <div class="urgency-box">
+    <p><strong>On April 17, 2026, the Federal Reserve, OCC, and FDIC jointly issued SR 26-2</strong>, replacing SR 11-7 for the first time in 15 years. While formally scoped to institutions above $30 billion in assets, the revised guidance establishes the supervisory baseline that examiners, auditors, and counterparties now reference regardless of institution size. Any bank with a meaningful AI footprint, vendor-managed models, or employee-facing GenAI tools operates under these expectations in practice. Generative AI and agentic AI were explicitly excluded from scope, creating what the industry calls the "GenAI Gap."</p>
+    <p><strong>The question is no longer whether your institution needs an AI governance program.</strong> It is whether your current program can survive the first examination under the new guidance.</p>
+  </div>
+
+  <h2>What the diagnostic answers</h2>
+  <p>After three weeks, your institution will have clear, documented answers to three questions that every board, risk committee, and examiner will ask:</p>
+  <p><strong>What AI do we have?</strong> A complete inventory of every model, vendor AI tool, and employee-facing GenAI deployment, classified under SR 26-2's three-tier materiality framework.</p>
+  <p><strong>Where are the gaps?</strong> A control-by-control gap analysis benchmarked against the CRI FS AI RMF's 230 control objectives, mapped to your institution's adoption stage, with cross-references to SR 26-2, EU AI Act, ISO 42001, and NIST AI RMF.</p>
+  <p><strong>What do we do first?</strong> A prioritized 90-day remediation roadmap sequenced by regulatory exposure, starting with the 21 baseline controls every institution needs regardless of size or complexity.</p>
+
+  <h2>Engagement timeline</h2>
+  <div class="timeline">
+    <div class="timeline-phase">
+      <div class="phase-label">Week 1</div>
+      <div>
+        <p class="phase-title">Discovery &amp; Inventory</p>
+        <p class="phase-body">Kickoff session with your risk, technology, and compliance leads. Access to existing model inventories, vendor registers, and AI usage policies. If no formal inventory exists, that finding itself is documented as the first control gap (CRI GV-1.6.1). Every AI system classified into SR 26-2's three tiers: traditional models (full MRM scope), non-model tools (excluded), and GenAI/agentic AI (the Gap). Shadow AI discovery across business units. Employee-facing GenAI tools mapped and risk-classified.</p>
+      </div>
+    </div>
+    <div class="timeline-phase">
+      <div class="phase-label">Week 2</div>
+      <div>
+        <p class="phase-title">Gap Analysis &amp; GenAI Exposure</p>
+        <p class="phase-body">Current governance practices benchmarked against the CRI FS AI RMF's control objectives at your adoption stage, cross-referenced to 20 regulatory frameworks. The <a href="crosswalk.html">Invictera Cross-Framework Mapping</a> provides the analytical backbone. GenAI exposure documented: every generative AI tool operating outside SR 26-2's scope, assessed against enterprise risk governance requirements. Specific control failures identified with remediation priority.</p>
+      </div>
+    </div>
+    <div class="timeline-phase">
+      <div class="phase-label">Week 3</div>
+      <div>
+        <p class="phase-title">Roadmap &amp; Executive Briefing</p>
+        <p class="phase-body">Prioritized 90-day remediation plan mapped to CRI adoption stages: the 21 Initial controls first, then the 105 Minimal controls within 90 days. Each action item assigned an owner, timeline, and evidence requirement aligned to examination expectations. Board-ready presentation delivered to your CRO, CISO, and governance leadership. Findings, risk exposure, and the remediation roadmap presented in the format examiners and audit committees expect.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Deliverables</h2>
+  <div class="deliverables-grid">
+    <div class="deliverable">
+      <div class="deliverable-num">1.</div>
+      <p class="deliverable-name">AI/ML Model Inventory</p>
+      <p class="deliverable-desc">Complete inventory with SR 26-2 materiality classification. Traditional models, non-model tools, and GenAI systems mapped and risk-tiered.</p>
+    </div>
+    <div class="deliverable">
+      <div class="deliverable-num">2.</div>
+      <p class="deliverable-name">CRI FS AI RMF Gap Analysis</p>
+      <p class="deliverable-desc">Control-by-control assessment against the 230-objective framework, benchmarked to your adoption stage, with cross-framework regulatory mapping.</p>
+    </div>
+    <div class="deliverable">
+      <div class="deliverable-num">3.</div>
+      <p class="deliverable-name">GenAI Exposure Report</p>
+      <p class="deliverable-desc">Assessment of every generative AI tool operating in the "GenAI Gap" outside SR 26-2 scope. Enterprise risk governance recommendations.</p>
+    </div>
+    <div class="deliverable">
+      <div class="deliverable-num">4.</div>
+      <p class="deliverable-name">90-Day Remediation Roadmap</p>
+      <p class="deliverable-desc">Prioritized action plan sequenced by regulatory exposure. Mapped to CRI adoption stages with owner assignments and evidence requirements.</p>
+    </div>
+    <div class="deliverable">
+      <div class="deliverable-num">5.</div>
+      <p class="deliverable-name">Executive Briefing</p>
+      <p class="deliverable-desc">Board-ready presentation. Findings, risk posture, and remediation plan in the format examiners and audit committees expect.</p>
+    </div>
+    <div class="deliverable">
+      <div class="deliverable-num">6.</div>
+      <p class="deliverable-name">Cross-Framework Compliance Map</p>
+      <p class="deliverable-desc">Your institution's controls mapped across SR 26-2, NIST AI RMF, EU AI Act, ISO 42001, and applicable state and international frameworks.</p>
+    </div>
+  </div>
+
+  <h2>Why Invictera</h2>
+  <p>Invictera is not a generalist consulting firm advising on AI governance from a slide deck. We built the infrastructure practitioners use to navigate the regulatory landscape.</p>
+  <div class="proof-grid">
+    <div class="proof-item">
+      <div class="proof-num">20</div>
+      <div class="proof-label">Frameworks Mapped</div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-num">6</div>
+      <div class="proof-label">Apps Shipped</div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-num">230</div>
+      <div class="proof-label">Control Objectives</div>
+    </div>
+  </div>
+  <p>We published the <a href="crosswalk.html">interactive cross-framework mapping</a> that connects the CRI FS AI RMF's 230 control objectives to SR 26-2, EU AI Act, ISO 42001, DORA, and 16 other regulatory frameworks. We shipped six certification preparation platforms to the App Store, including the AIGP Exam Prep application for AI governance practitioners. The diagnostic applies the same analytical rigor to your institution's specific governance posture.</p>
+
+  <div class="cta-section">
+    <h2>Schedule an introduction</h2>
+    <p>The diagnostic is scoped as a fixed-fee engagement with a defined timeline and concrete deliverables. Initial conversations typically run 20 minutes and focus on your institution's current AI footprint and regulatory exposure.</p>
+    <br>
+    <a href="mailto:hello@invictera.com?subject=3-Week SR 26-2 Readiness Diagnostic" class="cta-link">hello@invictera.com</a>
+    <p style="margin-top: 32px; font-size: 0.82rem; color: var(--muted);">Invictera maintains strict confidentiality protocols. All preliminary discussions occur under non-disclosure terms. Viewing this page does not create a client relationship or advisory obligation. All engagements are governed by a separate written agreement. See <a href="terms.html" style="color:var(--muted);">Terms of Service</a>.</p>
+  </div>
+
+</div>
+
+<footer>
+  <span class="footer-logo">Invictera</span>
+  <ul class="footer-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="crosswalk.html">Frameworks</a></li>
+    <li><a href="diagnostic.html">Diagnostic</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="terms.html">Terms</a></li>
+    <li><a href="disclosures.html">Disclosures</a></li>
+  </ul>
+  <span class="footer-copy">© 2026 Invictera LLC</span>
+</footer>
+
+</body>
+</html>
