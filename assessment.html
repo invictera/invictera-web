@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Governance Maturity Assessment — Invictera</title>
+  <meta name="description" content="Assess your institution's AI governance maturity in 2 minutes. Determine your CRI FS AI RMF adoption stage and see which of the 230 control objectives apply to you.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --ink: #0f0f0e; --paper: #f8f6f1; --rule: #d8d3c8; --muted: #6b6760; --serif: 'EB Garamond', Georgia, serif; --sans: 'DM Sans', system-ui, sans-serif; --accent: #1a1a18; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; background: var(--paper); border-bottom: 1px solid var(--rule); z-index: 100; padding: 0 48px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--serif); font-size: 1.25rem; font-weight: 500; letter-spacing: 0.04em; text-decoration: none; color: var(--ink); }
+    .nav-back { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+    .nav-back:hover { color: var(--ink); }
+
+    .page-wrap { max-width: 720px; margin: 0 auto; padding: 120px 48px 96px; }
+    .page-eyebrow { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; }
+    .page-title { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 400; line-height: 1.15; margin-bottom: 20px; }
+    .page-title em { font-style: italic; color: var(--muted); }
+    .page-subtitle { font-size: 1rem; color: var(--muted); line-height: 1.8; font-weight: 300; margin-bottom: 40px; }
+
+    /* PROGRESS */
+    .progress-wrap { margin-bottom: 48px; }
+    .progress-bar { height: 3px; background: var(--rule); border-radius: 2px; overflow: hidden; margin-bottom: 8px; }
+    .progress-fill { height: 100%; background: var(--ink); transition: width 0.4s ease; }
+    .progress-label { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; }
+
+    /* QUESTION */
+    .question-block { display: none; }
+    .question-block.active { display: block; }
+    .q-dimension { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .q-text { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; line-height: 1.35; margin-bottom: 32px; }
+    .q-instruction { font-size: 0.82rem; color: var(--muted); font-weight: 300; margin-bottom: 20px; font-style: italic; }
+
+    /* OPTIONS */
+    .option { padding: 18px 22px; border: 1px solid var(--rule); margin-bottom: 10px; cursor: pointer; transition: all 0.15s; position: relative; }
+    .option:hover { border-color: var(--muted); background: #f0ede5; }
+    .option.selected { border-color: var(--ink); background: #f0ede5; }
+    .option.selected::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--ink); }
+    .option-label { font-size: 0.9rem; font-weight: 400; color: var(--ink); line-height: 1.6; }
+
+    /* NAVIGATION */
+    .nav-buttons { display: flex; justify-content: space-between; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--rule); }
+    .btn { padding: 12px 28px; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; font-family: var(--sans); cursor: pointer; transition: all 0.15s; border: none; }
+    .btn-back { background: transparent; color: var(--muted); border: 1px solid var(--rule); }
+    .btn-back:hover { border-color: var(--ink); color: var(--ink); }
+    .btn-next { background: var(--ink); color: var(--paper); }
+    .btn-next:hover { background: #333; }
+    .btn-next:disabled { background: var(--rule); color: var(--muted); cursor: not-allowed; }
+    .btn-hidden { visibility: hidden; }
+
+    /* RESULTS */
+    #results { display: none; }
+    .result-stage { font-family: var(--serif); font-size: 2.8rem; font-weight: 400; margin-bottom: 8px; }
+    .result-desc { font-size: 1rem; color: var(--muted); line-height: 1.8; font-weight: 300; margin-bottom: 40px; }
+
+    .result-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-bottom: 40px; }
+    .result-stat { background: var(--paper); padding: 28px 20px; text-align: center; }
+    .stat-n { font-family: var(--serif); font-size: 2.2rem; color: var(--ink); }
+    .stat-l { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+
+    .dimension-results { margin-bottom: 40px; }
+    .dim-row { display: grid; grid-template-columns: 180px 1fr 80px; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--rule); align-items: center; }
+    .dim-name { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; color: var(--ink); }
+    .dim-bar-wrap { height: 6px; background: var(--rule); border-radius: 3px; overflow: hidden; }
+    .dim-bar { height: 100%; border-radius: 3px; transition: width 0.6s ease; }
+    .dim-stage { font-size: 0.72rem; color: var(--muted); text-align: right; }
+
+    .stage-initial .dim-bar { background: #6b7280; width: 25%; }
+    .stage-minimal .dim-bar { background: #3b82f6; width: 50%; }
+    .stage-evolving .dim-bar { background: #b97a04; width: 75%; }
+    .stage-embedded .dim-bar { background: #10b981; width: 100%; }
+
+    .cta-section { border-top: 1px solid var(--rule); padding-top: 40px; margin-top: 40px; }
+    .cta-section h3 { font-family: var(--serif); font-size: 1.35rem; font-weight: 400; margin-bottom: 16px; }
+    .cta-section p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; font-weight: 300; margin-bottom: 20px; }
+    .cta-link { display: inline-flex; align-items: center; gap: 12px; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); text-decoration: none; font-weight: 500; border-bottom: 1px solid var(--ink); padding-bottom: 4px; margin-right: 32px; transition: gap 0.2s; }
+    .cta-link:hover { gap: 18px; }
+    .cta-link::after { content: '\2192'; }
+
+    .disclaimer { font-size: 0.75rem; color: var(--muted); line-height: 1.6; font-weight: 300; padding-top: 24px; border-top: 1px solid var(--rule); margin-top: 48px; }
+
+    footer { border-top: 1px solid var(--rule); padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { font-family: var(--serif); font-size: 1rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--ink); }
+    .footer-copy { font-size: 0.75rem; color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 24px; }
+      .page-wrap { padding: 100px 24px 64px; }
+      .result-stats { grid-template-columns: 1fr; }
+      .dim-row { grid-template-columns: 1fr; gap: 6px; }
+      .dim-stage { text-align: left; }
+      footer { padding: 24px; flex-direction: column; gap: 12px; }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root { --ink: #e8e4dc; --paper: #141412; --rule: #2e2c28; --muted: #8a8680; }
+      nav { background: #141412; }
+      .option:hover { background: #1c1b18; }
+      .option.selected { background: #1c1b18; }
+      .result-stat { background: #141412; }
+      .btn-next { background: var(--ink); color: #141412; }
+      footer { background: #141412; }
+    }
+  </style>
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog&&window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="vi init Ti Ci ft Ri Oi ki capture calculateEventProperties Li register register_once register_for_session unregister unregister_for_session zi getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty Ni Ai createPersonProfile setInternalOrTestUser Ui Si Hi opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Fi debug bt ji getPageViewId captureTraceFeedback captureTraceMetric wi".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_lD3VY4M5qZkTWhpnOjdAvmtsIwtU75xt6YFPZ7a4bUy',{api_host:'https://k.invictera.com',ui_host:'https://us.posthog.com',defaults:'2026-01-30',person_profiles:'always'});
+  </script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Invictera</a>
+  <div style="display:flex;gap:28px;">
+    <a href="/#findings" class="nav-back">Findings</a>
+    <a href="/#notes" class="nav-back">Operating Notes</a>
+    <a href="casestudy.html" class="nav-back">Case Study</a>
+    <a href="/#apps" class="nav-back">Apps</a>
+    <a href="/#about" class="nav-back">About</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <p class="page-eyebrow">Self-Assessment</p>
+  <h1 class="page-title">AI Governance <em>Maturity Assessment</em></h1>
+  <p class="page-subtitle">Six questions. Two minutes. Determine which of the CRI FS AI RMF's 230 control objectives apply to your institution and where your governance gaps are most likely to appear.</p>
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap" id="progress-wrap">
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+    <p class="progress-label" id="progress-label">Question 1 of 6</p>
+  </div>
+
+  <!-- QUESTIONS -->
+  <div id="questions">
+
+    <div class="question-block active" data-q="0">
+      <p class="q-dimension">Dimension 1 of 6: Business Integration</p>
+      <p class="q-text">How deeply are AI systems integrated into your institution's business operations?</p>
+      <p class="q-instruction">Select the statement that most closely describes your current state.</p>
+      <div class="option" data-val="0" onclick="selectOption(this)"><p class="option-label">We are exploring AI or running isolated pilots that do not touch production systems or customer-facing processes.</p></div>
+      <div class="option" data-val="1" onclick="selectOption(this)"><p class="option-label">AI supports specific business functions (fraud detection, credit scoring, customer service) in production, but with limited scope and manual oversight at key decision points.</p></div>
+      <div class="option" data-val="2" onclick="selectOption(this)"><p class="option-label">AI is deployed across multiple business lines and handles regulated or customer-impacting decisions with defined automation thresholds.</p></div>
+      <div class="option" data-val="3" onclick="selectOption(this)"><p class="option-label">AI operates at the core of the institution, powering high-stakes decisions across lending, trading, compliance, and customer engagement with minimal manual intervention and full regulatory data exposure.</p></div>
+    </div>
+
+    <div class="question-block" data-q="1">
+      <p class="q-dimension">Dimension 2 of 6: Governance Maturity</p>
+      <p class="q-text">How would you characterize your institution's AI governance program?</p>
+      <p class="q-instruction">Select the statement that most closely describes your current state.</p>
+      <div class="option" data-val="0" onclick="selectOption(this)"><p class="option-label">We have no formal AI governance program. AI oversight is ad hoc, handled by individual teams or project sponsors without centralized coordination.</p></div>
+      <div class="option" data-val="1" onclick="selectOption(this)"><p class="option-label">We have documented AI policies and a designated governance body, but enforcement is inconsistent and coverage is incomplete across business units.</p></div>
+      <div class="option" data-val="2" onclick="selectOption(this)"><p class="option-label">We have an established AI governance program with regular risk assessments, defined accountability, and integration into the enterprise risk framework.</p></div>
+      <div class="option" data-val="3" onclick="selectOption(this)"><p class="option-label">AI governance is indistinguishable from how the institution operates: embedded into planning cycles, compensation structures, risk reporting, and board-level decision-making with continuous maturity assessment.</p></div>
+    </div>
+
+    <div class="question-block" data-q="2">
+      <p class="q-dimension">Dimension 3 of 6: Deployment Architecture</p>
+      <p class="q-text">How are AI systems developed and deployed at your institution?</p>
+      <p class="q-instruction">Select the statement that most closely describes your current state.</p>
+      <div class="option" data-val="0" onclick="selectOption(this)"><p class="option-label">We primarily use off-the-shelf vendor tools with minimal customization. No internal model development capability.</p></div>
+      <div class="option" data-val="1" onclick="selectOption(this)"><p class="option-label">We use a mix of vendor platforms and some internally developed models, deployed in controlled environments with manual promotion to production.</p></div>
+      <div class="option" data-val="2" onclick="selectOption(this)"><p class="option-label">We maintain both vendor-managed and internally built AI systems with automated deployment pipelines and structured model lifecycle management.</p></div>
+      <div class="option" data-val="3" onclick="selectOption(this)"><p class="option-label">The institution maintains a heterogeneous AI estate spanning internal builds, cloud-hosted vendor models, and bespoke systems, all governed through automated deployment pipelines with unified monitoring and lifecycle management.</p></div>
+    </div>
+
+    <div class="question-block" data-q="3">
+      <p class="q-dimension">Dimension 4 of 6: Third-Party AI Reliance</p>
+      <p class="q-text">To what extent does your institution rely on third-party AI vendors?</p>
+      <p class="q-instruction">Select the statement that most closely describes your current state.</p>
+      <div class="option" data-val="0" onclick="selectOption(this)"><p class="option-label">We use minimal third-party AI. Any vendor AI tools are peripheral (e.g., basic chatbot, email filtering) and not integrated into core operations.</p></div>
+      <div class="option" data-val="1" onclick="selectOption(this)"><p class="option-label">We rely on a few third-party AI vendors for specific functions (fraud detection, KYC/AML, document processing) with standard vendor management oversight.</p></div>
+      <div class="option" data-val="2" onclick="selectOption(this)"><p class="option-label">We use multiple third-party AI vendors across several business functions, including some customer-facing applications, with AI-specific due diligence and contractual controls.</p></div>
+      <div class="option" data-val="3" onclick="selectOption(this)"><p class="option-label">Third-party AI is embedded across the value chain: underwriting, servicing, surveillance, and customer interaction. Vendor models process regulated data and influence material decisions with full contractual and governance oversight.</p></div>
+    </div>
+
+    <div class="question-block" data-q="4">
+      <p class="q-dimension">Dimension 5 of 6: Strategic Ambition</p>
+      <p class="q-text">What are your institution's primary objectives for AI adoption?</p>
+      <p class="q-instruction">Select the statement that most closely describes your current state.</p>
+      <div class="option" data-val="0" onclick="selectOption(this)"><p class="option-label">We are primarily exploring AI for basic operational efficiency: reducing manual processes, automating routine tasks, and improving internal workflows.</p></div>
+      <div class="option" data-val="1" onclick="selectOption(this)"><p class="option-label">We are using AI to improve customer experience and operational efficiency, with specific use cases in production that deliver measurable business value.</p></div>
+      <div class="option" data-val="2" onclick="selectOption(this)"><p class="option-label">AI is a strategic priority across multiple business objectives: efficiency, customer experience, risk management, regulatory compliance, and competitive positioning.</p></div>
+      <div class="option" data-val="3" onclick="selectOption(this)"><p class="option-label">AI is a board-level strategic priority driving new revenue models, market positioning, and institutional identity, with explicit commitments to responsible deployment, regulatory leadership, and measurable ethical standards.</p></div>
+    </div>
+
+    <div class="question-block" data-q="5">
+      <p class="q-dimension">Dimension 6 of 6: Generative AI Exposure</p>
+      <p class="q-text">How is generative AI (ChatGPT, Copilot, LLMs) used at your institution?</p>
+      <p class="q-instruction">This dimension addresses the regulatory gap created by SR 26-2's explicit exclusion of generative and agentic AI from model risk management guidance.</p>
+      <div class="option" data-val="0" onclick="selectOption(this)"><p class="option-label">We have not adopted generative AI, or usage is limited to informal experimentation without institutional awareness or policy.</p></div>
+      <div class="option" data-val="1" onclick="selectOption(this)"><p class="option-label">Employees use generative AI tools (ChatGPT, Copilot) for productivity, but we have a basic acceptable use policy and no systematic monitoring of usage patterns or data exposure.</p></div>
+      <div class="option" data-val="2" onclick="selectOption(this)"><p class="option-label">We have enterprise-licensed generative AI tools with documented acceptable use policies, data classification controls, and periodic review of usage, but limited technical safeguards (prompt injection testing, output monitoring).</p></div>
+      <div class="option" data-val="3" onclick="selectOption(this)"><p class="option-label">We deploy generative AI in customer-facing and decision-support applications with comprehensive governance: prompt injection testing, output monitoring, data leakage prevention, human oversight thresholds, and incident response procedures specific to GenAI failures.</p></div>
+    </div>
+
+  </div>
+
+  <!-- NAV BUTTONS -->
+  <div class="nav-buttons" id="nav-buttons">
+    <button class="btn btn-back btn-hidden" id="btn-back" onclick="prevQuestion()">Back</button>
+    <button class="btn btn-next" id="btn-next" onclick="nextQuestion()" disabled>Select an answer to continue</button>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="results">
+    <p class="page-eyebrow">Your Assessment</p>
+    <h2 class="result-stage" id="result-stage"></h2>
+    <p class="result-desc" id="result-desc"></p>
+
+    <div class="result-stats">
+      <div class="result-stat"><div class="stat-n" id="stat-controls"></div><div class="stat-l">Control Objectives Apply</div></div>
+      <div class="result-stat"><div class="stat-n" id="stat-stage"></div><div class="stat-l">Adoption Stage</div></div>
+      <div class="result-stat"><div class="stat-n" id="stat-gap"></div><div class="stat-l">Potential Gap Areas</div></div>
+    </div>
+
+    <h3 style="font-family:var(--serif); font-size:1.1rem; font-weight:500; margin-bottom:16px;">Assessment by Dimension</h3>
+    <div class="dimension-results" id="dim-results"></div>
+
+    <div id="genai-alert" style="display:none; background:#f0ede5; border-left:3px solid #b97a04; padding:20px 24px; margin-bottom:32px;">
+      <p style="font-size:0.9rem; color:var(--ink); font-weight:500; margin-bottom:8px;">GenAI Gap Detected</p>
+      <p style="font-size:0.85rem; color:var(--muted); line-height:1.7; font-weight:300;">Your institution uses generative AI but your governance maturity for GenAI tools is below your overall adoption stage. SR 26-2 (April 2026) explicitly excluded generative and agentic AI from model risk management guidance, creating a regulatory gap. The CRI FS AI RMF provides the control framework to address this gap. This is typically the highest-priority finding in our diagnostic engagements.</p>
+    </div>
+
+    <div class="cta-section">
+      <h3>What comes next</h3>
+      <p>This assessment identifies your adoption stage. The diagnostic identifies your specific gaps, quantifies your exposure, and delivers a prioritized remediation roadmap your board and examiners can act on.</p>
+      <div style="margin-top:20px;">
+        <a href="crosswalk.html" class="cta-link">Explore the control objectives</a>
+        <a href="diagnostic.html" class="cta-link">View the 3-week diagnostic</a>
+      </div>
+      <div style="margin-top:24px;">
+        <a href="mailto:hello@invictera.com?subject=AI Governance Assessment Follow-Up" class="cta-link">Schedule an introduction</a>
+      </div>
+    </div>
+
+    <p class="disclaimer">This self-assessment provides an indicative adoption stage based on the six governance dimensions defined in the CRI Financial Services AI Risk Management Framework. It does not constitute a formal gap analysis, compliance certification, or regulatory assessment. A comprehensive diagnostic requires direct examination of your institution's model inventory, policies, and governance artifacts. See <a href="terms.html" style="color:var(--ink);">Terms of Service</a> for full disclaimers.</p>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-logo">Invictera</span>
+  <ul class="footer-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="casestudy.html">Case Study</a></li>
+    <li><a href="/#apps">Apps</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="terms.html">Terms</a></li>
+    <li><a href="disclosures.html">Disclosures</a></li>
+  </ul>
+  <span class="footer-copy">&copy; 2026 Invictera LLC</span>
+</footer>
+
+<script>
+const STAGES = [
+  { name: "Initial", controls: 21, desc: "Your institution is at the foundational stage of AI governance. The 21 Initial-stage control objectives represent the absolute baseline: AI inventory, basic oversight structures, and fundamental risk awareness. Most institutions at this stage lack a centralized model inventory, have no formal AI governance committee, and have not classified their AI systems under SR 26-2's materiality framework." },
+  { name: "Minimal", controls: 126, desc: "Your institution has moved beyond ad hoc governance into structured risk management. The 126 Minimal-stage control objectives cover documented policies, systematic validation, regular review cycles, third-party AI due diligence, and basic bias testing. Gaps at this stage typically appear in explainability thresholds, adverse action compliance, and GenAI-specific governance." },
+  { name: "Evolving", controls: 193, desc: "AI is integrated into your operational risk framework with advanced testing and cross-functional coordination. The 193 Evolving-stage control objectives add continuous monitoring, drift detection, fair lending monitoring, stress testing, privacy impact assessments, and incident response procedures. This is where examination readiness becomes critical." },
+  { name: "Embedded", controls: 230, desc: "AI is woven into critical business functions and decision-making at enterprise scale. All 230 control objectives apply. Your governance program should demonstrate portfolio-level risk aggregation, intersectional bias assessment, red team exercises, automated risk scoring, and model sunset planning. This is the target state for institutions with significant regulatory exposure." },
+];
+
+const DIMENSIONS = [
+  "Business Integration",
+  "Governance Maturity",
+  "Deployment Architecture",
+  "Third-Party AI Reliance",
+  "Strategic Ambition",
+  "Generative AI Exposure",
+];
+
+const STAGE_NAMES = ["Initial", "Minimal", "Evolving", "Embedded"];
+
+let currentQ = 0;
+let answers = [null, null, null, null, null, null];
+
+function selectOption(el) {
+  const block = el.closest('.question-block');
+  block.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  answers[currentQ] = parseInt(el.dataset.val);
+  document.getElementById('btn-next').disabled = false;
+  document.getElementById('btn-next').textContent = currentQ < 5 ? 'Continue' : 'See Results';
+}
+
+function nextQuestion() {
+  if (answers[currentQ] === null) return;
+  if (currentQ < 5) {
+    document.querySelectorAll('.question-block')[currentQ].classList.remove('active');
+    currentQ++;
+    document.querySelectorAll('.question-block')[currentQ].classList.add('active');
+    updateProgress();
+    document.getElementById('btn-next').disabled = answers[currentQ] === null;
+    document.getElementById('btn-next').textContent = currentQ < 5 ? 'Continue' : 'See Results';
+    document.getElementById('btn-back').classList.remove('btn-hidden');
+  } else {
+    showResults();
+  }
+}
+
+function prevQuestion() {
+  if (currentQ > 0) {
+    document.querySelectorAll('.question-block')[currentQ].classList.remove('active');
+    currentQ--;
+    document.querySelectorAll('.question-block')[currentQ].classList.add('active');
+    updateProgress();
+    document.getElementById('btn-next').disabled = false;
+    document.getElementById('btn-next').textContent = 'Continue';
+    if (currentQ === 0) document.getElementById('btn-back').classList.add('btn-hidden');
+  }
+}
+
+function updateProgress() {
+  const pct = ((currentQ) / 6) * 100;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-label').textContent = `Question ${currentQ + 1} of 6`;
+}
+
+function showResults() {
+  document.getElementById('questions').style.display = 'none';
+  document.getElementById('nav-buttons').style.display = 'none';
+  document.getElementById('progress-wrap').style.display = 'none';
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('progress-fill').style.width = '100%';
+
+  // Calculate: use the MINIMUM dimension score (weakest link determines stage)
+  // But also calculate average for nuance
+  const minScore = Math.min(...answers);
+  const avgScore = answers.reduce((a, b) => a + b, 0) / answers.length;
+  
+  // Stage is determined by the floor of the average, capped by the minimum + 1
+  // This means one very weak dimension pulls you down but doesn't override everything
+  let stageIdx = Math.min(Math.floor(avgScore), minScore + 1);
+  stageIdx = Math.max(0, Math.min(3, stageIdx));
+
+  const stage = STAGES[stageIdx];
+
+  document.getElementById('result-stage').textContent = stage.name + ' Stage';
+  document.getElementById('result-desc').textContent = stage.desc;
+  document.getElementById('stat-controls').textContent = stage.controls;
+  document.getElementById('stat-stage').textContent = stage.name;
+  
+  // Count dimensions below the assessed stage
+  const gaps = answers.filter(a => a < stageIdx).length;
+  document.getElementById('stat-gap').textContent = gaps + ' of 6';
+
+  // Dimension breakdown
+  let dimHtml = '';
+  for (let i = 0; i < 6; i++) {
+    const dimStage = STAGE_NAMES[answers[i]];
+    dimHtml += `<div class="dim-row stage-${dimStage.toLowerCase()}">
+      <span class="dim-name">${DIMENSIONS[i]}</span>
+      <div class="dim-bar-wrap"><div class="dim-bar"></div></div>
+      <span class="dim-stage">${dimStage}</span>
+    </div>`;
+  }
+  document.getElementById('dim-results').innerHTML = dimHtml;
+
+  // GenAI alert: show if GenAI dimension is lower than overall stage
+  if (answers[5] < stageIdx) {
+    document.getElementById('genai-alert').style.display = 'block';
+  }
+
+  // Track completion (anonymous)
+  if (window.posthog) {
+    posthog.capture('assessment_completed', { stage: stage.name, controls: stage.controls });
+  }
+}
+</script>
+
+</body>
+</html>
