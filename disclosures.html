@@ -69,6 +69,12 @@
       .hero-image-strip img { filter: grayscale(30%) brightness(0.7); }
     }
   .footer-links { display: flex; gap: 24px; list-style: none; } .footer-links a { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; } .footer-links a:hover { color: var(--ink); }
+    
+    .nav-links { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; }
+    .nav-links a { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-tagline { display: block; font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+    @media (max-width: 700px) { .nav-links { display: none; } }
     </style>
   <!-- PostHog Analytics -->
   <script>
@@ -84,14 +90,17 @@
 <body>
 
 <nav>
-  <a href="/" class="nav-logo">Invictera</a>
-  <div style="display:flex;gap:32px;">
-    <a href="/#apps" class="nav-back">Apps</a>
-    <a href="/#approach" class="nav-back">Approach</a>
-    <a href="casestudy.html" class="nav-back">Case Study</a>
-    <a href="/#about" class="nav-back">About</a>
-    <a href="/#contact" class="nav-back">Contact</a>
-  </div>
+  <a href="/" class="nav-logo">
+    Invictera
+    <span class="nav-tagline">Princeton, New Jersey</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/#findings">Findings</a></li>
+    <li><a href="/#notes">Operating Notes</a></li>
+    <li><a href="casestudy.html">Case Study</a></li>
+    <li><a href="/#apps">Apps</a></li>
+    <li><a href="/#about">About</a></li>
+  </ul>
 </nav>
 
 <div class="page-wrap">
@@ -266,8 +275,8 @@
   <span class="footer-logo">Invictera</span>
   <ul class="footer-links">
     <li><a href="/">Home</a></li>
-    <li><a href="/#apps">Apps</a></li>
     <li><a href="casestudy.html">Case Study</a></li>
+    <li><a href="/#apps">Apps</a></li>
     <li><a href="/#about">About</a></li>
     <li><a href="privacy.html">Privacy</a></li>
     <li><a href="terms.html">Terms</a></li>

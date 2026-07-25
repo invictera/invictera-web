@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Invictera — Product Studio</title>
-  <meta name="description" content="Invictera is a small product studio in Princeton, New Jersey. Six applications conceived, built, and shipped end to end by one operator using AI-assisted development." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Invictera</title>
+<meta name="description" content="Six production applications conceived, built and shipped end to end by one operator. What that taught about AI-assisted delivery, and where it breaks." />
+<meta property="og:title" content="Invictera — Six products. One operator. Built end to end." />
+<meta property="og:description" content="Seven months, six production applications, one operator. What that taught about AI-assisted delivery, and where it breaks." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://invictera.com/" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -149,45 +154,8 @@
       footer { background: #141412; }
     }
   </style>
-  
-<style>
-  .hero2 { max-width: 900px; margin: 0 auto; padding: 148px 48px 0; }
-  .h2-eyebrow { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 28px; }
-  .h2-title { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 400; line-height: 1.15; margin-bottom: 28px; }
-  .h2-title em { font-style: italic; color: var(--muted); }
-  .h2-body { font-size: 1.05rem; line-height: 1.85; color: var(--muted); font-weight: 300; max-width: 640px; }
-  .statrow { max-width: 900px; margin: 64px auto 0; padding: 0 48px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-  .statrow div { padding: 26px 0; border-right: 1px solid var(--rule); }
-  .statrow div:last-child { border-right: none; }
-  .statnum { font-family: var(--serif); font-size: 2rem; line-height: 1; margin-bottom: 8px; }
-  .statlbl { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-  .sect { max-width: 900px; margin: 0 auto; padding: 96px 48px 0; }
-  .sect-eyebrow { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
-  .sect-title { font-family: var(--serif); font-size: 1.9rem; font-weight: 400; line-height: 1.25; margin-bottom: 24px; }
-  .sect-body { font-size: 0.98rem; line-height: 1.85; color: var(--muted); font-weight: 300; max-width: 640px; margin-bottom: 14px; }
-  .applist { margin-top: 44px; border-top: 1px solid var(--rule); }
-  .approw { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--rule); }
-  .appname { font-weight: 500; font-size: 0.98rem; }
-  .appdesc { font-size: 0.86rem; color: var(--muted); font-weight: 300; margin-top: 5px; line-height: 1.6; }
-  .applink { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; white-space: nowrap; }
-  .applink:hover { color: var(--ink); }
-  .notes { margin-top: 40px; }
-  .note { padding: 22px 0; border-top: 1px solid var(--rule); }
-  .note h4 { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; margin-bottom: 8px; }
-  .note p { font-size: 0.92rem; color: var(--muted); font-weight: 300; line-height: 1.8; }
-  .endnote { max-width: 900px; margin: 96px auto 0; padding: 0 48px 96px; }
-  .endnote p { font-size: 0.92rem; color: var(--muted); font-weight: 300; line-height: 1.85; max-width: 640px; }
-  .endnote a { color: var(--ink); }
-  @media (max-width: 700px) {
-    .hero2, .sect, .endnote { padding-left: 24px; padding-right: 24px; }
-    .statrow { grid-template-columns: repeat(2, 1fr); padding: 0 24px; }
-    .statrow div:nth-child(2) { border-right: none; }
-    .approw { flex-direction: column; gap: 8px; }
-  }
-</style>
-
-  <!-- PostHog Analytics -->
-  <script>
+<!-- PostHog Analytics -->
+<script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog&&window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="vi init Ti Ci ft Ri Oi ki capture calculateEventProperties Li register register_once register_for_session unregister unregister_for_session zi getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty Ni Ai createPersonProfile setInternalOrTestUser Ui Si Hi opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Fi debug bt ji getPageViewId captureTraceFeedback captureTraceMetric wi".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
     posthog.init('phc_lD3VY4M5qZkTWhpnOjdAvmtsIwtU75xt6YFPZ7a4bUy',{api_host:'https://k.invictera.com',ui_host:'https://us.posthog.com',defaults:'2026-01-30',person_profiles:'always'});
   </script>
@@ -195,96 +163,245 @@
 <body>
 
 <nav>
-  <a href="/" class="nav-logo">Invictera</a>
-  <div style="display:flex;gap:32px;">
-    <a href="#apps" class="nav-back">Apps</a>
-    <a href="#approach" class="nav-back">Approach</a>
-    <a href="casestudy.html" class="nav-back">Case Study</a>
-    <a href="#about" class="nav-back">About</a>
-    <a href="#contact" class="nav-back">Contact</a>
-  </div>
+  <a href="/" class="nav-logo">
+    Invictera
+    <span class="nav-tagline">Princeton, New Jersey</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#findings">Findings</a></li>
+    <li><a href="#notes">Operating Notes</a></li>
+    <li><a href="casestudy.html">Case Study</a></li>
+    <li><a href="#apps">Apps</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
 </nav>
 
-<section class="hero2">
-  <p class="h2-eyebrow">Product Studio &middot; Princeton, New Jersey</p>
-  <h1 class="h2-title">Six products.<br>One operator.<br><em>Built end to end.</em></h1>
-  <p class="h2-body">Invictera is a small product studio. Every application here was conceived, designed, built, priced, shipped, and supported by one person, using generative AI copilots and agentic development workflows across the full lifecycle. The products are live on the App Store and serve real users. The studio exists to answer one question firsthand rather than theoretically: what does AI-assisted work actually do to a delivery workflow, and where does it stop working.</p>
-</section>
-
-<div class="statrow">
-  <div><div class="statnum">6</div><div class="statlbl">Products Shipped</div></div>
-  <div><div class="statnum">200+</div><div class="statlbl">Active Users</div></div>
-  <div><div class="statnum">1</div><div class="statlbl">Operator</div></div>
-  <div><div class="statnum">0</div><div class="statlbl">Employees</div></div>
-</div>
-
-<section class="sect" id="apps">
-  <p class="sect-eyebrow">The Products</p>
-  <h2 class="sect-title">Algorithmic preparation platforms for professional certification.</h2>
-  <p class="sect-body">Six applications built on a shared engine: adaptive item selection, spaced repetition, and Bayesian knowledge tracing, running locally on device. Independent educational tools, not affiliated with any credentialing body.</p>
-  <div class="applist">
-    <div class="approw">
-      <div><div class="appname">AIGP Exam Prep</div><div class="appdesc">AI Governance Professional certification preparation.</div></div>
-      <a href="https://apps.apple.com/us/app/aigp-exam-prep-ai-governance/id6759467048" target="_blank" rel="noopener" class="applink">App Store &rarr;</a>
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Product Studio &middot; Princeton, New Jersey</p>
+    <h1 class="hero-title">Six products.<br>One operator.<br><em>Built end to end.</em></h1>
+    <p class="hero-body">Invictera is the AI transformation I have actually run. Seven months, six production applications, conceived, designed, built, priced, shipped and now operated by one person using generative AI copilots and agentic development workflows. It is an organization of one, and I say so up front. What it produced is a first-hand read on where AI-assisted work compresses, where it fails, and why adoption stalls.</p>
+    <a href="casestudy.html" class="cta-link">Read the case study &rarr;</a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-pillars">
+      <div class="pillar">
+        <p class="pillar-num">i.</p>
+        <p class="pillar-title">Production systems, owned</p>
+        <p class="pillar-desc">Adaptive item selection, spaced repetition scheduling and Bayesian knowledge tracing for mastery estimation, executing on device. Designed, built and operated, not specified and handed off.</p>
+      </div>
+      <div class="pillar">
+        <p class="pillar-num">ii.</p>
+        <p class="pillar-title">The full arc, not a pilot</p>
+        <p class="pillar-desc">Concept to App Store release to live support, including the parts that do not compress: pricing, review cycles, disclosure and the users who file tickets when something breaks.</p>
+      </div>
+      <div class="pillar">
+        <p class="pillar-num">iii.</p>
+        <p class="pillar-title">Privacy by architecture</p>
+        <p class="pillar-desc">Local processing and zero personally identifiable information collected, which removes a category of obligation rather than managing it. A design decision with a governance rationale.</p>
+      </div>
     </div>
-    <div class="approw">
-      <div><div class="appname">Privacy Suite</div><div class="appdesc">IAPP privacy certification preparation across all tracks and jurisdictions.</div></div>
-      <a href="https://apps.apple.com/us/app/privacy-suite-exam-prep/id6760373001" target="_blank" rel="noopener" class="applink">App Store &rarr;</a>
-    </div>
-    <div class="approw">
-      <div><div class="appname">CIPP Hub</div><div class="appdesc">Certified Information Privacy Professional. US, EU, Canadian, and Asian tracks.</div></div>
-      <a href="https://apps.apple.com/us/app/cipp-hub-exam-prep/id6759620182" target="_blank" rel="noopener" class="applink">App Store &rarr;</a>
-    </div>
-    <div class="approw">
-      <div><div class="appname">CIPM Exam Prep</div><div class="appdesc">Certified Information Privacy Manager. Governance and program management.</div></div>
-      <a href="https://apps.apple.com/us/app/cipm-exam-prep/id6761635223" target="_blank" rel="noopener" class="applink">App Store &rarr;</a>
-    </div>
-    <div class="approw">
-      <div><div class="appname">CIPT Exam Prep</div><div class="appdesc">Certified Information Privacy Technologist. Privacy engineering.</div></div>
-      <a href="https://apps.apple.com/us/app/cipt-exam-prep/id6761635289" target="_blank" rel="noopener" class="applink">App Store &rarr;</a>
-    </div>
-    <div class="approw">
-      <div><div class="appname">StampReady</div><div class="appdesc">NCEES Professional Engineer preparation across 9 disciplines.</div></div>
-      <a href="https://apps.apple.com/us/app/stampready-pe-exam-prep/id6760597963" target="_blank" rel="noopener" class="applink">App Store &rarr;</a>
+    <div class="hero-stat-grid">
+      <div class="hero-stat"><span class="stat-number">6</span><span class="stat-label">Products Shipped</span></div>
+      <div class="hero-stat"><span class="stat-number">200+</span><span class="stat-label">Active Users</span></div>
+      <div class="hero-stat"><span class="stat-number">1</span><span class="stat-label">Operator</span></div>
+      <div class="hero-stat"><span class="stat-number">7</span><span class="stat-label">Months</span></div>
     </div>
   </div>
 </section>
 
-<section class="sect" id="approach">
-  <p class="sect-eyebrow">Approach</p>
-  <h2 class="sect-title">What building six products alone with AI actually taught.</h2>
-  <p class="sect-body">The products are the artifact. The method is the point. Four things held up across every release, and none of them are what the tooling vendors say. The full write-up is in <a href="casestudy.html" style="color:var(--ink);">Six Products, One Operator</a>.</p>
-  <div class="notes">
-    <div class="note"><h4>Where it holds</h4><p>Scaffolding, boilerplate, refactors, test generation, and first drafts of anything structured. The speed gain here is real and it is large. Work that used to justify a team of three moved inside one person's week.</p></div>
-    <div class="note"><h4>Where it breaks</h4><p>Anything requiring judgment about what should be built rather than how. Architecture decisions, data model tradeoffs, pricing, and the question of whether a feature should exist at all. Fluent output is not the same as correct output, and the failure mode is confident and wrong.</p></div>
-    <div class="note"><h4>Where review has to sit</h4><p>Close to the decision, not at the end of the pipeline. Reviewing generated work after it has been integrated costs more than writing it manually. The gate belongs at the point of intent, before generation, and again at the boundary where the work touches something a user depends on.</p></div>
-    <div class="note"><h4>Why adoption stalls</h4><p>Not at the build. At the last mile, where the new way of working has to survive contact with existing process, existing quality standards, and people who are accountable for outcomes. Capability arrives long before behaviour changes.</p></div>
+<section id="findings">
+  <div class="section-inner">
+    <div class="services-header">
+      <div>
+        <p class="section-label">Findings</p>
+        <h2 class="section-title">Three things worth saying out loud.</h2>
+      </div>
+      <p class="services-intro">Every claim below is tagged with where it comes from. Two decades of enterprise delivery is a different kind of evidence from seven months at n = 1, and conflating them would be the first mistake. Neither proves what happens at ten thousand people.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <p class="service-icon">01.</p>
+        <p class="service-name">Built the wrong way round</p>
+        <p class="service-desc">AI programs are being run as technology programs with a change workstream attached. The evidence I have says they are change programs with a technology workstream. They are built the other way because the people running them came from the technology side.</p>
+        <p class="app-row-eyebrow" style="margin-top:20px;">Grounded in twenty years of enterprise delivery and seven months at n = 1.</p>
+      </div>
+      <div class="service-card">
+        <p class="service-icon">02.</p>
+        <p class="service-name">The controls quietly weakened</p>
+        <p class="service-desc">Fluency and correctness have decoupled. Generated work carries none of the tells that uncertain human work carries, so any control that depends on a reviewer noticing something looks wrong is weaker than it was. I have not yet seen this conversation happen between an AI program and a control function.</p>
+        <p class="app-row-eyebrow" style="margin-top:20px;">Grounded in n = 1. Observed directly, not surveyed.</p>
+      </div>
+      <div class="service-card">
+        <p class="service-icon">03.</p>
+        <p class="service-name">The board number is measured wrong</p>
+        <p class="service-desc">Productivity is typically measured on the build phase, which compresses dramatically. The last mile does not compress at all. Measured end to end, the effect is real and materially smaller than the build figure suggests, which is why year-two disappointment is so predictable.</p>
+        <p class="app-row-eyebrow" style="margin-top:20px;">Grounded in n = 1, measured from month four.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-
-<section class="sect" id="about">
-  <p class="sect-eyebrow">About</p>
-  <h2 class="sect-title">Bharath Subramanya</h2>
-  <p class="sect-body">Founder, Invictera LLC. Transformation executive with 20+ years of enterprise program delivery, nine of them in financial services, running large regulated programs where the hard part was never the technology.</p>
-  <p class="sect-body">Trained as an engineer and started out writing embedded software for a consumer hardware platform, then spent nineteen years on the other side of the table: specifying, governing, and accepting software other people built. Enterprise transformation across banking, technology, and large corporate estates, including a $16.3B cross-border bank merger integration and a $10M+ transformation reaching 400,000 employees.</p>
-  <p class="sect-body">Started Invictera in January 2026 to answer one question firsthand rather than theoretically: what does AI-assisted work actually do to a delivery workflow, and where does it stop working. Six products later, the answer is in the Approach section above.</p>
-  <p class="sect-body">MBA, Duke University, Fuqua School of Business. M.S. Information Systems and Operations Management, University of Florida. B.E. Information Science. PMP. Based in Princeton, New Jersey.</p>
-  <p class="sect-body" style="margin-top:22px;"><a href="https://linkedin.com/in/bharathsubramanya" target="_blank" rel="noopener" class="applink">LinkedIn &rarr;</a></p>
+<section id="notes">
+  <div class="section-inner">
+    <div class="services-header">
+      <div>
+        <p class="section-label">Operating Notes</p>
+        <h2 class="section-title">What held across every release.</h2>
+      </div>
+      <p class="services-intro">The products are the artifact. The method is the point. These four held from the first release to the sixth, and none of them are what the tooling vendors say. The full write-up, including what broke and what I would do differently, is in <a href="casestudy.html">Six Products, One Operator</a>.</p>
+    </div>
+    <div class="clients-grid">
+      <div class="client-sector">
+        <p class="sector-name">Where it holds</p>
+        <p class="sector-desc">Scaffolding, boilerplate, refactors, test generation, and first drafts of anything with a known structure. The compression is not incremental. Work that justified a week of engineering time routinely landed in an afternoon.</p>
+      </div>
+      <div class="client-sector">
+        <p class="sector-name">Where it breaks</p>
+        <p class="sector-desc">Judgment about what to build rather than how. Architecture, data model tradeoffs, pricing, and whether a feature should exist at all. The failure mode is confident and wrong, and the artifact gives you no signal either way.</p>
+      </div>
+      <div class="client-sector">
+        <p class="sector-name">Where the gate belongs</p>
+        <p class="sector-desc">Before generation, at the point of intent, and again at the boundary where work touches something a user depends on. Reviewing generated work at the end of the pipeline costs more than writing it by hand.</p>
+      </div>
+      <div class="client-sector">
+        <p class="sector-name">Why adoption stalls</p>
+        <p class="sector-desc">At the last mile. Everything between a working capability and a changed way of operating: existing process, accountability, and the people who own the outcome. Capability arrives long before behavior does.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="endnote" id="contact">
-  <p class="sect-eyebrow" style="margin-bottom:20px;">Contact</p>
-  <p>Invictera LLC is a product company. It does not take consulting clients, does not sell advisory services, and has no engagements.</p>
-  <p style="margin-top:14px;">For questions about the products: <a href="mailto:hello@invictera.com">hello@invictera.com</a></p>
+<section id="record">
+  <div class="section-inner">
+    <div class="fw-feature">
+      <div>
+        <p class="section-label">Before This</p>
+        <h2 class="section-title">Twenty years of doing this at a scale where n was not one.</h2>
+        <div class="fw-body">
+          <p>The studio is recent. The work underneath it is not. Two decades of enterprise program delivery, nine years of it inside financial institutions, on programs where the technology was rarely the hard part and the adoption always was.</p>
+          <p>Integration governance across fourteen workstreams alongside a Big 4 firm on a $16.3B cross-border bank merger. A $10M+ transformation taken from business case to implementation across 400,000 employees. A services catalog driven from zero to 100 services, producing $26M in annual savings through adoption rather than build. A top-10 North American bank engagement grown from $1M to $14M at 40% margin.</p>
+          <p>That is the half of the picture the studio does not prove, and the half that makes the studio worth paying attention to.</p>
+        </div>
+      </div>
+      <div class="fw-stats">
+      <div class="fw-stat"><span class="stat-number">$16.3B</span><span class="stat-label">Merger Integration Governed</span></div>
+      <div class="fw-stat"><span class="stat-number">400K+</span><span class="stat-label">Employees Reached</span></div>
+      <div class="fw-stat"><span class="stat-number">$26M</span><span class="stat-label">Annual Savings Enabled</span></div>
+      <div class="fw-stat"><span class="stat-number">14x</span><span class="stat-label">Account Growth</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="apps">
+  <div class="section-inner">
+    <div class="apps-layout">
+      <div class="apps-left">
+        <p class="section-label">The Products</p>
+        <h2 class="section-title">Six applications on one engine.</h2>
+        <div class="fw-body">
+          <p>Algorithmic preparation platforms for professional certification and licensure. Independent educational tools, not affiliated with any credentialing body.</p>
+        </div>
+      </div>
+      <div class="apps-right">
+      <a href="https://apps.apple.com/us/app/aigp-exam-prep-ai-governance/id6759467048" target="_blank" rel="noopener" class="app-row">
+        <img src="AIGP.png" alt="" class="app-row-icon">
+        <div class="app-row-info">
+          <p class="app-row-name">AIGP Exam Prep</p>
+          <p class="app-row-desc">AI Governance Professional certification preparation.</p>
+        </div>
+        <span class="app-row-link">App Store &rarr;</span>
+      </a>
+      <a href="https://apps.apple.com/us/app/privacy-suite-exam-prep/id6760373001" target="_blank" rel="noopener" class="app-row">
+        <img src="PS.png" alt="" class="app-row-icon">
+        <div class="app-row-info">
+          <p class="app-row-name">Privacy Suite</p>
+          <p class="app-row-desc">IAPP privacy certification across all tracks and jurisdictions.</p>
+        </div>
+        <span class="app-row-link">App Store &rarr;</span>
+      </a>
+      <a href="https://apps.apple.com/us/app/cipp-hub-exam-prep/id6759620182" target="_blank" rel="noopener" class="app-row">
+        <img src="CIPP.png" alt="" class="app-row-icon">
+        <div class="app-row-info">
+          <p class="app-row-name">CIPP Hub</p>
+          <p class="app-row-desc">Certified Information Privacy Professional. US, EU, Canadian and Asian tracks.</p>
+        </div>
+        <span class="app-row-link">App Store &rarr;</span>
+      </a>
+      <a href="https://apps.apple.com/us/app/cipm-exam-prep/id6761635223" target="_blank" rel="noopener" class="app-row">
+        <img src="CIPM.png" alt="" class="app-row-icon">
+        <div class="app-row-info">
+          <p class="app-row-name">CIPM Exam Prep</p>
+          <p class="app-row-desc">Certified Information Privacy Manager. Governance and program management.</p>
+        </div>
+        <span class="app-row-link">App Store &rarr;</span>
+      </a>
+      <a href="https://apps.apple.com/us/app/cipt-exam-prep/id6761635289" target="_blank" rel="noopener" class="app-row">
+        <img src="CIPT.png" alt="" class="app-row-icon">
+        <div class="app-row-info">
+          <p class="app-row-name">CIPT Exam Prep</p>
+          <p class="app-row-desc">Certified Information Privacy Technologist. Privacy engineering.</p>
+        </div>
+        <span class="app-row-link">App Store &rarr;</span>
+      </a>
+      <a href="https://apps.apple.com/us/app/stampready-pe-exam-prep/id6760597963" target="_blank" rel="noopener" class="app-row app-row-alt">
+        <img src="icon-stampready.png" alt="" class="app-row-icon">
+        <div class="app-row-info">
+          <p class="app-row-name">StampReady</p>
+          <p class="app-row-desc">NCEES Professional Engineer preparation across nine disciplines.</p>
+        </div>
+        <span class="app-row-link">App Store &rarr;</span>
+      </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-inner">
+    <div class="fw-feature">
+      <div>
+        <p class="section-label">About</p>
+        <h2 class="section-title">Bharath Subramanya</h2>
+      </div>
+      <div class="fw-body">
+        <p>Founder, Invictera LLC. Transformation executive with 20+ years of enterprise program delivery, nine of them in financial services, running large regulated programs across banking and technology.</p>
+        <p>Trained as an engineer and started out writing embedded software for a consumer hardware platform, then spent nineteen years on the other side of the table, specifying, governing and accepting software other people built.</p>
+        <p>Started Invictera in January 2026 to answer one question firsthand rather than theoretically: what does AI-assisted work actually do to a delivery workflow, and where does it stop working.</p>
+        <p>MBA, Duke University, Fuqua School of Business. M.S. Information Systems and Operations Management, University of Florida. B.E. Information Science. PMP. Based in Princeton, New Jersey.</p>
+        <a href="https://linkedin.com/in/bharathsubramanya" target="_blank" rel="noopener" class="cta-link" style="margin-top:8px;">LinkedIn &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-inner">
+    <div>
+      <p class="section-label">Contact</p>
+      <h2 class="section-title">Invictera LLC is a product company.</h2>
+      <div class="contact-body">
+        <p>It does not take consulting clients, does not sell advisory services and has no engagements. Nothing on this site is an offer of professional services, and reading it creates no relationship of any kind.</p>
+        <p>For questions about the products, or about the case study, get in touch.</p>
+      </div>
+    </div>
+    <div>
+      <div class="contact-details">
+        <div class="contact-row"><span class="contact-key">Email</span><span class="contact-val"><a href="mailto:hello@invictera.com">hello@invictera.com</a></span></div>
+        <div class="contact-row"><span class="contact-key">Entity</span><span class="contact-val">Invictera LLC</span></div>
+        <div class="contact-row"><span class="contact-key">Location</span><span class="contact-val">Princeton, New Jersey</span></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <footer>
   <span class="footer-logo">Invictera</span>
   <ul class="footer-links">
     <li><a href="/">Home</a></li>
-    <li><a href="/#apps">Apps</a></li>
     <li><a href="casestudy.html">Case Study</a></li>
+    <li><a href="/#apps">Apps</a></li>
     <li><a href="/#about">About</a></li>
     <li><a href="privacy.html">Privacy</a></li>
     <li><a href="terms.html">Terms</a></li>
