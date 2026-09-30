@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="robots" content="noindex,nofollow" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Page Retired — Invictera</title>
+<title>AI Governance Diagnostic | Invictera</title>
+<meta name="description" content="A fixed-scope AI governance diagnostic for financial institutions, built on a map of 230 CRI FS AI RMF control objectives across 20 frameworks." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -58,13 +58,14 @@
 
     footer { border-top: 1px solid var(--rule); padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; }
     .footer-logo { font-family: var(--serif); font-size: 1rem; color: var(--muted); }
-    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 24px; list-style: none; }
     .footer-links a { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
     .footer-links a:hover { color: var(--ink); }
     .footer-copy { font-size: 0.75rem; color: var(--muted); }
 
     @media (max-width: 600px) {
       nav { padding: 0 24px; }
+      .nav-set { display: none !important; }
       .page-wrap { padding: 100px 24px 64px; }
       .timeline-phase { grid-template-columns: 1fr; gap: 8px; }
       .phase-label { font-size: 0.72rem; }
@@ -90,27 +91,76 @@
 <body>
 <nav>
   <a href="/" class="nav-logo">Invictera</a>
-  <div style="display:flex;gap:28px;">
-    <a href="/#findings" class="nav-back">Findings</a>
-    <a href="/#notes" class="nav-back">Operating Notes</a>
-    <a href="casestudy.html" class="nav-back">Case Study</a>
-    <a href="/#apps" class="nav-back">Apps</a>
-    <a href="/#about" class="nav-back">About</a>
+  <div class="nav-set" style="display:flex;gap:28px;">
+    <a href="/#practices" class="nav-back">Practices</a>
+    <a href="crosswalk.html" class="nav-back">Framework Map</a>
+    <a href="assessment.html" class="nav-back">Assessment</a>
+    <a href="/#contact" class="nav-back">Contact</a>
   </div>
 </nav>
 <div class="page-wrap">
-  <p class="page-eyebrow">Retired</p>
-  <h1 class="page-title">This page is no longer current</h1>
-  <p>Invictera LLC is a product company. It does not take consulting clients, does not sell advisory services, and has no engagements. Any service description previously published at this address has been withdrawn.</p>
-  <p>Current work is described on the <a href="/">home page</a> and in <a href="casestudy.html">Six Products, One Operator</a>.</p>
+  <p class="page-eyebrow">AI Adoption &amp; Governance &middot; Fixed Scope</p>
+  <h1 class="page-title">AI Governance Diagnostic. <em>Where your controls still depend on someone noticing.</em></h1>
+  <p class="page-subtitle">A fixed-scope engagement for banks and financial institutions that already have AI in production or close to it. It maps your AI use against the 230 control objectives of the CRI Financial Services AI Risk Management Framework, cross-referenced to NIST AI RMF, ISO 42001, the EU AI Act and the other instruments in the <a href="crosswalk.html">cross-framework map</a>, and tells you which gaps matter first.</p>
+
+  <div class="urgency-box">
+    <p><strong>Why now.</strong> Generated work is fluent whether or not it is correct. Any control that relies on a reviewer noticing that something looks off is weaker than it was, and most control inventories were written before that was true.</p>
+    <p>The diagnostic finds those controls and recommends a mechanism outside the thing being checked.</p>
+  </div>
+
+  <h2>How it runs</h2>
+  <div class="timeline">
+    <div class="timeline-phase">
+      <p class="phase-label">Phase one</p>
+      <div>
+        <p class="phase-title">Scope and inventory</p>
+        <p class="phase-body">Agree which business lines and AI uses are in scope. Build or validate the inventory of AI systems, including generative tools used inside existing processes, with an accountable owner for each.</p>
+      </div>
+    </div>
+    <div class="timeline-phase">
+      <p class="phase-label">Phase two</p>
+      <div>
+        <p class="phase-title">Applicability and gaps</p>
+        <p class="phase-body">Determine which of the 230 objectives apply at your adoption stage, then test current policies, controls and evidence against them. Every control that depends on human review of generated output is flagged separately.</p>
+      </div>
+    </div>
+    <div class="timeline-phase">
+      <p class="phase-label">Phase three</p>
+      <div>
+        <p class="phase-title">Roadmap and readout</p>
+        <p class="phase-body">A sequenced remediation roadmap with owners, and an executive readout that separates what must change before the next deployment from what can follow.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>What you receive</h2>
+  <div class="deliverables-grid">
+    <div class="deliverable"><p class="deliverable-num">1</p><p class="deliverable-name">AI use inventory</p><p class="deliverable-desc">Systems, uses, owners and adoption stage, in one register.</p></div>
+    <div class="deliverable"><p class="deliverable-num">2</p><p class="deliverable-name">Gap analysis</p><p class="deliverable-desc">Applicable objectives, current state and evidence, cross-referenced to the frameworks you report against.</p></div>
+    <div class="deliverable"><p class="deliverable-num">3</p><p class="deliverable-name">Review-dependent controls</p><p class="deliverable-desc">The controls weakened by fluent generated output, and a recommended replacement mechanism for each.</p></div>
+    <div class="deliverable"><p class="deliverable-num">4</p><p class="deliverable-name">Remediation roadmap</p><p class="deliverable-desc">Sequenced, owned and sized, with an executive readout.</p></div>
+  </div>
+
+  <h2>Who leads it</h2>
+  <p>Bharath Subramanya, founder of Invictera. Twenty plus years of enterprise delivery, including bank M&amp;A integration, core-banking go-live readiness and a commercial-lending center of excellence, and firsthand operation of six AI-built products in production. Author of the <a href="crosswalk.html">cross-framework map</a>.</p>
+
+  <h2>Boundaries</h2>
+  <p>The diagnostic is an operating and control-design review. It is not legal or regulatory advice, second-line model validation, or an audit opinion, and it works alongside your legal, risk and audit functions rather than in place of them. It does not certify compliance with any framework or regulation. Scope, duration and fee are fixed in a signed statement of work.</p>
+
+  <div class="cta-section">
+    <h2>Start with the assessment</h2>
+    <p>Six questions, two minutes, and a first view of which objectives apply to you.</p>
+    <p style="margin-top:24px;"><a href="assessment.html" class="cta-link">Take the assessment</a></p>
+    <p style="margin-top:24px;">Or write to <a href="mailto:hello@invictera.com">hello@invictera.com</a>.</p>
+  </div>
 </div>
 <footer>
   <span class="footer-logo">Invictera</span>
   <ul class="footer-links">
     <li><a href="/">Home</a></li>
-    <li><a href="casestudy.html">Case Study</a></li>
-    <li><a href="/#apps">Apps</a></li>
-    <li><a href="/#about">About</a></li>
+    <li><a href="/#practices">Practices</a></li>
+    <li><a href="/#research">Research</a></li>
+    <li><a href="/#products">Products</a></li>
     <li><a href="privacy.html">Privacy</a></li>
     <li><a href="terms.html">Terms</a></li>
     <li><a href="disclosures.html">Disclosures</a></li>
